@@ -23,19 +23,12 @@ public class MyView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public MyView(Context context) {
-        super(context);
-        init();
-        Log.e("init", "1");
+        this(context,null);
     }
 
 
     public MyView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MyView);
-        mColor = a.getColor(R.styleable.MyView_circle_color, Color.BLACK);
-        a.recycle();
-        init();
-        Log.e("init", "2");
+        this(context, attrs,0);
     }
 
     public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
