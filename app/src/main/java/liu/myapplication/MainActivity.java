@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import liu.myapplication.ui.AnimationActivity;
 import liu.myapplication.ui.CustomViewActivity;
+import liu.myapplication.ui.OkhttpActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.animation_property).setOnClickListener(this);
         findViewById(R.id.custom_view).setOnClickListener(this);
+        findViewById(R.id.ok_http).setOnClickListener(this);
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         height = wm.getDefaultDisplay().getHeight();
         width = wm.getDefaultDisplay().getWidth();
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
             case R.id.custom_view:
                 intent.setClass(this, CustomViewActivity.class);
+                break;
+            case R.id.ok_http:
+                intent.setClass(this, OkhttpActivity.class);
                 break;
         }
         startActivity(intent);
