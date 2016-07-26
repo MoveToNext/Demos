@@ -7,8 +7,8 @@ package liu.myapplication;
  * @date: 2016/7/22 14:30
  */
 public class Paint {
-    float x;
-    float y;
+    public float x;
+    public float y;
 
     public Paint() {
     }
