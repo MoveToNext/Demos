@@ -20,6 +20,7 @@
         <activity android:name=".ui.AnimationActivity"></activity>
         <activity android:name=".ui.CustomViewActivity"></activity>
         <activity android:name=".ui.OkhttpActivity"></activity>
+        <activity android:name=".ui.ObserverTestActivity"></activity>
     </application>
 
 </manifest>

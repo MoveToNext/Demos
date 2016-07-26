@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.orhanobut.logger.Logger;
+
 import liu.myapplication.ui.AnimationActivity;
 import liu.myapplication.ui.CustomViewActivity;
+import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,9 +27,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.animation_property).setOnClickListener(this);
         findViewById(R.id.custom_view).setOnClickListener(this);
         findViewById(R.id.ok_http).setOnClickListener(this);
+        findViewById(R.id.Observer).setOnClickListener(this);
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         height = wm.getDefaultDisplay().getHeight();
         width = wm.getDefaultDisplay().getWidth();
+        Logger.init().methodCount(0);
         Log.e("height", height + "");
         Log.e("width", width + "");
     }
@@ -44,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.ok_http:
                 intent.setClass(this, OkhttpActivity.class);
+                break;
+            case R.id.Observer:
+                intent.setClass(this, ObserverTestActivity.class);
                 break;
         }
         startActivity(intent);
