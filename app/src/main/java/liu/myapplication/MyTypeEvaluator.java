@@ -5,8 +5,8 @@ import android.util.Log;
 
 /**
  * @PackageName: liu.myapplication
- * @Description:
- * @author: LanYing
+ * @Description: 估值器
+ * @author: MIFM
  * @date: 2016/7/22 14:31
  */
 public class MyTypeEvaluator implements TypeEvaluator<Paint> {

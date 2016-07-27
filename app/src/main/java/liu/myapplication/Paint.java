@@ -3,7 +3,7 @@ package liu.myapplication;
 /**
  * @PackageName: liu.myapplication
  * @Description:
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/22 14:30
  */
 public class Paint {

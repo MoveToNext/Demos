@@ -6,8 +6,8 @@ import liu.myapplication.Interface.RoleObserver;
 
 /**
  * @PackageName: liu.myapplication.Interface.Impl
- * @Description:
- * @author: LanYing
+ * @Description: 具体观察者A
+ * @author: MIFM
  * @date: 2016/7/26 17:09
  */
 public class AObserver implements RoleObserver {

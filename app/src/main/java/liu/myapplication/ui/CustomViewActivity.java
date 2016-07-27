@@ -9,7 +9,7 @@ import liu.myapplication.R;
 /**
  * @PackageName: liu.myapplication.ui
  * @Description:
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/26 11:44
  */
 public class CustomViewActivity extends AppCompatActivity {

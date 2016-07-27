@@ -22,7 +22,7 @@ import okhttp3.Response;
 /**
  * @PackageName: liu.myapplication.ui
  * @Description: Okhttp笔记
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/26 13:26
  */
 public class OkhttpActivity extends AppCompatActivity implements View.OnClickListener {

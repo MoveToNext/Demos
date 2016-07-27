@@ -8,8 +8,8 @@ import liu.myapplication.Interface.Subject;
 
 /**
  * @PackageName: liu.myapplication.Interface.Impl
- * @Description:
- * @author: LanYing
+ * @Description: 具体主题
+ * @author: MIFM
  * @date: 2016/7/26 17:05
  */
 public class ImplSubject implements Subject {

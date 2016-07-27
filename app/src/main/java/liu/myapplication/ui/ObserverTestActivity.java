@@ -13,7 +13,7 @@ import liu.myapplication.R;
 /**
  * @PackageName: liu.myapplication.ui
  * @Description:
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/26 17:13
  */
 public class ObserverTestActivity extends AppCompatActivity implements View.OnClickListener {

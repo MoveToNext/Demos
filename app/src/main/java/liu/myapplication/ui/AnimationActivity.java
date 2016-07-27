@@ -5,28 +5,43 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
+
+import com.orhanobut.logger.Logger;
 
 import liu.myapplication.MyTypeEvaluator;
 import liu.myapplication.Paint;
 import liu.myapplication.R;
+import liu.myapplication.view.MyView;
 
 /**
  * @PackageName: liu.myapplication.ui
  * @Description: 属性动画
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/26 11:39
  */
 public class AnimationActivity extends AppCompatActivity {
-    private ImageView image;
+    private MyView image;
     private Context ctx = this;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
-        image = (ImageView) findViewById(R.id.image);
+        image = (MyView) findViewById(R.id.image);
+        image.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    Logger.e("被触摸了");
+                    return true;
+                }else {
+                    return false;
+                }
+
+            }
+        });
     }
 
     public void rotate(final View view){
