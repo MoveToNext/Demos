@@ -49,3 +49,33 @@
 		    }
 		}		
 
+##Butter Knife
+
+   在使用高版本的Butter Knife会出现空指针异常，需要在gradle里面配置
+   classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+   并在项目gradle里面添加 apt 'com.jakewharton:butterknife-compiler:8.2.1'
+   具体代码如下：
+   
+   
+    Configure your project-level build.gradle to include the 'android-apt' plugin:
+    
+    buildscript {
+      repositories {
+        mavenCentral()
+       }
+      dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+      }
+    }
+    Then, apply the 'android-apt' plugin in your module-level build.gradle and add the Butter Knife dependencies:
+    
+    apply plugin: 'android-apt'
+    
+    android {
+      ...
+    }
+    
+    dependencies {
+      compile 'com.jakewharton:butterknife:8.2.1'
+      apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    }
