@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.ui.AnimationActivity;
 import liu.myapplication.ui.CustomViewActivity;
+import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
 
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     Button getChannel;
     @BindView(R.id.animation_property)
     Button animationProperty;
+    @BindView(R.id.HeaderListView)
+    Button HeaderListView;
     private int width;
     private int height;
 
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 获得清单文件中的数值
+     *
      * @return meta_data值
      */
     public String getMeta_data() {
@@ -68,25 +72,28 @@ public class MainActivity extends AppCompatActivity {
         return msg;
     }
 
-    @OnClick({R.id.animation_property, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel})
+    @OnClick({R.id.animation_property, R.id.HeaderListView,R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
-            case R.id.animation_property:
+            case R.id.animation_property://属性动画
                 intent.setClass(this, AnimationActivity.class);
                 break;
-            case R.id.custom_view:
+            case R.id.custom_view://自定义栏目
                 intent.setClass(this, CustomViewActivity.class);
                 break;
             case R.id.ok_http:
                 intent.setClass(this, OkhttpActivity.class);
                 break;
-            case R.id.Observer:
+            case R.id.Observer://观察者模式
                 intent.setClass(this, ObserverTestActivity.class);
                 break;
-            case R.id.getChannel:
+            case R.id.getChannel://获取渠道号
                 getMeta_data();
                 return;
+            case R.id.HeaderListView:
+                intent.setClass(this, HeaderScrollViewActivity.class);
+                break;
         }
         startActivity(intent);
     }

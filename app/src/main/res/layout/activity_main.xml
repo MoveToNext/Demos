@@ -36,4 +36,11 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="获得清单文件中的Meta_data"/>
+    <Button
+        android:id="@+id/HeaderListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="HeaderListView"/>
+
 </LinearLayout>
