@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import liu.myapplication.R;
 import liu.myapplication.utils.ColorUtil;
+import liu.myapplication.utils.DensityUtil;
 import liu.myapplication.view.MyScrollView;
 
 /**
@@ -77,6 +78,7 @@ public class HeaderScrollViewActivity extends AppCompatActivity {
         Logger.e(outRect.top + "outRect.top");
         ViewGroup.LayoutParams layoutParams = rlBar.getLayoutParams();
         layoutParams.height += outRect.top;
+        Logger.d(DensityUtil.px2dip(this,outRect.top)+"dp");
         rlBar.setLayoutParams(layoutParams);
         super.onWindowFocusChanged(hasFocus);
     }
