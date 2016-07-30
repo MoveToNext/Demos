@@ -21,6 +21,7 @@ import liu.myapplication.ui.CustomViewActivity;
 import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
+import liu.myapplication.ui.RemoteViewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     Button animationProperty;
     @BindView(R.id.HeaderListView)
     Button HeaderListView;
+    @BindView(R.id.RemoteView)
+    Button RemoteView;
     private int width;
     private int height;
 
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         return msg;
     }
 
-    @OnClick({R.id.animation_property, R.id.HeaderListView,R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel})
+    @OnClick({R.id.animation_property, R.id.HeaderListView,R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel,R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -93,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 return;
             case R.id.HeaderListView:
                 intent.setClass(this, HeaderScrollViewActivity.class);
+                break;
+            case R.id.RemoteView:
+                intent.setClass(this, RemoteViewActivity.class);
                 break;
         }
         startActivity(intent);
