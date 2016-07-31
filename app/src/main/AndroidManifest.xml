@@ -23,7 +23,9 @@
         <activity
             android:theme="@style/transparentTitleTheme"
             android:name=".ui.HeaderScrollViewActivity"></activity>
-        <activity android:name=".ui.RemoteViewActivity"></activity>
+        <activity
+            android:launchMode="singleTop"
+            android:name=".ui.RemoteViewActivity"></activity>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />

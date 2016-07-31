@@ -11,10 +11,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RemoteViews;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import liu.myapplication.MainActivity;
 import liu.myapplication.R;
 
 /**
@@ -22,8 +24,10 @@ import liu.myapplication.R;
  */
 public class RemoteViewActivity extends AppCompatActivity {
 
-    @BindView(R.id.btn_send_notification)
-    Button send_notifi;
+    @BindView(R.id.send_custom_Notification)//发送自定义
+    Button btn_custom;
+    @BindView(R.id.send_default_Notification)//发送系统默认的
+    Button btn_default;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +35,37 @@ public class RemoteViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_send_notification})
+    @OnClick({R.id.send_custom_Notification,R.id.send_default_Notification})
     public void onclick(View view){
         switch (view.getId()){
-            case R.id.btn_send_notification:
-                send_notifi();
+            case R.id.send_custom_Notification:
+                send_custom_notifi();
             break;
+            case R.id.send_default_Notification:
+                send_notifi();
+                break;
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void send_custom_notifi() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        RemoteViews remoteView = new RemoteViews(getPackageName(),R.layout.notifi_remoteview);
+        remoteView.setImageViewResource(R.id.notifi_image,R.mipmap.ic_launcher);
+        remoteView.setTextViewText(R.id.notifi_text,"我是测试文本");
+        PendingIntent p1 = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent p2 = PendingIntent.getActivity(this, 0, new Intent(this, RemoteViewActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteView.setOnClickPendingIntent(R.id.notifi_image,p1);
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("title")
+                .setContentInfo("info")
+                .setContent(remoteView)
+                .setContentIntent(p2);
+        Notification build = builder.build();
+        build.contentView = remoteView;
+        build.flags = Notification.FLAG_AUTO_CANCEL;
+        manager.notify(0,build);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)

@@ -5,8 +5,13 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_send_notification"
+        android:id="@+id/send_custom_Notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="发送通知栏" />
+        android:text="发送自定义通知栏" />
+    <Button
+        android:id="@+id/send_default_Notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送系统默认通知栏" />
 </LinearLayout>
