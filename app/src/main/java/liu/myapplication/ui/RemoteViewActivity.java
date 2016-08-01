@@ -47,6 +47,9 @@ public class RemoteViewActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 发送自定义的通知栏
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void send_custom_notifi() {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -68,13 +71,20 @@ public class RemoteViewActivity extends AppCompatActivity {
         manager.notify(0,build);
     }
 
+    /**
+     * 发送系统默认的通知栏
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void send_notifi() {
-        Notification.Builder builder = new Notification.Builder(this).setTicker("显示于屏幕顶端状态栏的文本");
-        builder.setSmallIcon(R.mipmap.ic_launcher);
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .setTicker("显示于屏幕顶端状态栏的文本")
+                .setSubText("fdf");
         Intent intent = new Intent(this, RemoteViewActivity.class);
         PendingIntent p = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification build = builder.setContentIntent(p).setContentTitle("title").setContentText("text").build();
+        build.flags = Notification.FLAG_AUTO_CANCEL;
         NotificationManager manger = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manger.notify(1,build);
     }
