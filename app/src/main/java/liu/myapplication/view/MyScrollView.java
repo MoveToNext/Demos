@@ -11,7 +11,7 @@ import android.widget.ScrollView;
 /**
  * @PackageName: liu.myapplication.view
  * @Description:
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/29 15:38
  */
 public class MyScrollView extends ScrollView {

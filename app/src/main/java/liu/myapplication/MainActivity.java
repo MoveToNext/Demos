@@ -1,10 +1,12 @@
 package liu.myapplication;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -71,10 +73,23 @@ public class MainActivity extends AppCompatActivity {
         }
         String msg = appInfo.metaData.getString("UMENG_CHANNEL");
         Logger.d(msg);
-        getChannel.setText(msg);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("渠道号")
+                .setMessage(msg)
+                .setPositiveButton("确定", null)
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).show();
+//        getChannel.setText(msg);
         return msg;
     }
 
+    /**
+     * 响应点击事件
+     * @param view
+     */
     @OnClick({R.id.animation_property, R.id.HeaderListView,R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel,R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();

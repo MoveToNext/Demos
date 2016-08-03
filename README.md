@@ -79,3 +79,13 @@
       compile 'com.jakewharton:butterknife:8.2.1'
       apt 'com.jakewharton:butterknife-compiler:8.2.1'
     }
+    
+##onWindowFocusChanged   
+    
+     @Override
+        public void onWindowFocusChanged(boolean hasFocus) {
+            super.onWindowFocusChanged(hasFocus);
+        }
+        
+        
+当一个Activity完全加载完毕后，然后就执行        

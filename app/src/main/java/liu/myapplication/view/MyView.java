@@ -7,7 +7,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+
+import com.orhanobut.logger.Logger;
 
 import liu.myapplication.R;
 
@@ -56,6 +59,18 @@ public class MyView extends View {
         }else if (hightSpecMode == MeasureSpec.AT_MOST){
             setMeasuredDimension(widthSpecSize,200);
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Logger.e("MYview - dispatchTouchEvent");
+        return super.dispatchTouchEvent(event);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Logger.e("MYview - onTouchEvent");
+        return super.onTouchEvent(event);
     }
 
     @Override

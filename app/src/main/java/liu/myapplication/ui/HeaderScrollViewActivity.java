@@ -27,7 +27,7 @@ import liu.myapplication.view.MyScrollView;
 /**
  * @PackageName: liu.myapplication.ui
  * @Description: 仿美团首页
- * @author: LanYing
+ * @author: MIFM
  * @date: 2016/7/28 16:23
  */
 public class HeaderScrollViewActivity extends AppCompatActivity {
@@ -58,6 +58,7 @@ public class HeaderScrollViewActivity extends AppCompatActivity {
 
     private int titleHeight;
     private Window window;
+    private boolean isFirst = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,17 +70,24 @@ public class HeaderScrollViewActivity extends AppCompatActivity {
         window = getWindow();
     }
 
+    /**
+     * activity完成渲染后调用给预留状态栏
+     * @param hasFocus
+     */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        titleHeight = rlBar.getHeight();
-        Logger.e(titleHeight + "");
-        Rect outRect = new Rect();
-        this.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
-        Logger.e(outRect.top + "outRect.top");
-        ViewGroup.LayoutParams layoutParams = rlBar.getLayoutParams();
-        layoutParams.height += outRect.top;
-        Logger.d(DensityUtil.px2dip(this,outRect.top)+"dp");
-        rlBar.setLayoutParams(layoutParams);
+        if (isFirst){
+            titleHeight = rlBar.getHeight();
+            Logger.e(titleHeight + "");
+            Rect outRect = new Rect();
+            this.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
+            Logger.e(outRect.top + "outRect.top");
+            ViewGroup.LayoutParams layoutParams = rlBar.getLayoutParams();
+            layoutParams.height += outRect.top;
+            Logger.d(DensityUtil.px2dip(this,outRect.top)+"dp");
+            rlBar.setLayoutParams(layoutParams);
+            isFirst = !isFirst;
+        }
         super.onWindowFocusChanged(hasFocus);
     }
 
