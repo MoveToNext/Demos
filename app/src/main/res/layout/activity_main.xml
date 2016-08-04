@@ -49,5 +49,11 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="RemoteView+Notification"/>
+    <Button
+        android:id="@+id/popupwindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="弹出popupwindow"/>
 
 </LinearLayout>

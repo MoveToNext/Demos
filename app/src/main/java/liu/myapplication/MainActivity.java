@@ -5,13 +5,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
 
@@ -24,6 +29,7 @@ import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
 import liu.myapplication.ui.RemoteViewActivity;
+import liu.myapplication.view.MyView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     Button HeaderListView;
     @BindView(R.id.RemoteView)
     Button RemoteView;
+    @BindView(R.id.popupwindow)
+    Button popupwindow;
     private int width;
     private int height;
 
@@ -88,9 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 响应点击事件
+     *
      * @param view
      */
-    @OnClick({R.id.animation_property, R.id.HeaderListView,R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel,R.id.RemoteView})
+    @OnClick({R.id.popupwindow,R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -115,7 +124,26 @@ public class MainActivity extends AppCompatActivity {
             case R.id.RemoteView:
                 intent.setClass(this, RemoteViewActivity.class);
                 break;
+            case R.id.popupwindow://弹出popupwindow
+                showPopupWin();
+                return;
         }
         startActivity(intent);
+    }
+
+    private void showPopupWin() {
+        PopupWindow p = new PopupWindow(this);
+        TextView t = new TextView(this);
+        t.setText("i am a pop");
+        t.setTextColor(Color.BLACK);
+        //实例化一个ColorDrawable颜色为半透明
+        ColorDrawable dw = new ColorDrawable(0xb0000000);
+        //设置SelectPicPopupWindow弹出窗体的背景
+        p.setBackgroundDrawable(dw);
+        p.setContentView(new MyView(this));
+        p.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        p.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        Logger.d("chidfdsfsdfds");
+        p.showAtLocation(this.popupwindow, Gravity.BOTTOM,0,0);
     }
 }
