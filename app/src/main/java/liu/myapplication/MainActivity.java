@@ -28,6 +28,7 @@ import liu.myapplication.ui.CustomViewActivity;
 import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
+import liu.myapplication.ui.PullToRefreshListActivity;
 import liu.myapplication.ui.RemoteViewActivity;
 import liu.myapplication.view.MyView;
 
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     Button RemoteView;
     @BindView(R.id.popupwindow)
     Button popupwindow;
+    @BindView(R.id.PullToRefreshListView)
+    Button PullToRefreshListView;
     private int width;
     private int height;
 
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      */
-    @OnClick({R.id.popupwindow,R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
+    @OnClick({R.id.PullToRefreshListView,R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -127,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.popupwindow://弹出popupwindow
                 showPopupWin();
                 return;
+            case R.id.PullToRefreshListView://PullToRefreshListView
+                intent.setClass(this, PullToRefreshListActivity.class);
+                break;
         }
         startActivity(intent);
     }
@@ -144,6 +150,6 @@ public class MainActivity extends AppCompatActivity {
         p.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
         p.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         Logger.d("chidfdsfsdfds");
-        p.showAtLocation(this.popupwindow, Gravity.BOTTOM,0,0);
+        p.showAtLocation(this.popupwindow, Gravity.BOTTOM, 0, 0);
     }
 }
