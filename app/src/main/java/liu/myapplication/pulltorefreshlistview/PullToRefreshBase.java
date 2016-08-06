@@ -11,6 +11,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import com.orhanobut.logger.Logger;
+
 import liu.myapplication.pulltorefreshlistview.ILoadingLayout.State;
 
 
@@ -87,6 +90,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout
 	/** 可刷新View的包装布局 */
 	private FrameLayout mRefreshableViewWrapper;
 
+	protected boolean canPullUp;
 	/**
 	 * 构造方法
 	 * 
@@ -272,6 +276,12 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout
 			// 3，isPullLoading()，理由与第2条相同
 			if (absDiff > mTouchSlop || isPullRefreshing() || isPullLoading()) {
 				mLastMotionY = event.getY();
+				Logger.d("del---"+deltaY);
+				if (deltaY > 0){
+					canPullUp = false;
+				}else {
+					canPullUp = true;
+				}
 				// 第一个显示出来，Header已经显示或拉下
 				if (isPullRefreshEnabled() && isReadyForPullDown()) {
 					// 1，Math.abs(getScrollY()) >
@@ -296,6 +306,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout
 			break;
 		}
 
+		Logger.d("mIsHandledTouchEvent---"+mIsHandledTouchEvent);
 		return mIsHandledTouchEvent;
 	}
 

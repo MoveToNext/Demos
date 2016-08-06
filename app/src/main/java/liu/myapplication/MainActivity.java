@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         height = wm.getDefaultDisplay().getHeight();
         width = wm.getDefaultDisplay().getWidth();
-        Logger.init().methodCount(0);
         Log.e("height", height + "");
         Log.e("width", width + "");
     }

@@ -25,6 +25,7 @@ public class PullToRefreshListActivity extends AppCompatActivity {
     @BindView(R.id.ListView)
     PullToRefreshListView pullToRefreshListView;
     private android.widget.ListView listView;
+//    String[] array={"aaa","bbb","ccc","ddd","eee","eee","eee","eee","eee","eee","eee"};
     String[] array={"aaa","bbb","ccc","ddd","eee"};
 
     @Override
@@ -37,14 +38,15 @@ public class PullToRefreshListActivity extends AppCompatActivity {
 
     private void initListView() {
         listView = pullToRefreshListView.getRefreshableView();
-        pullToRefreshListView.setPullLoadEnabled(true);
+        pullToRefreshListView.setPullLoadEnabled(false);
         pullToRefreshListView.setScrollLoadEnabled(true);
         ArrayAdapter adapter=new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,array);
         listView.setAdapter(adapter);
+//        pullToRefreshListView.setHasMoreData(false);
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Logger.d("onPullDownToRefresh");
+                Logger.d("下拉刷新");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -52,9 +54,8 @@ public class PullToRefreshListActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                pullToRefreshListView.onPullUpRefreshComplete();
                                 pullToRefreshListView.onPullDownRefreshComplete();
-                                Logger.d("pullToRefreshListView.onPullUpRefreshComplete();");
+                                Logger.d("下拉刷新完成");
                             }
                         });
                     }
@@ -63,7 +64,7 @@ public class PullToRefreshListActivity extends AppCompatActivity {
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Logger.d("onPullUpToRefresh;");
+                Logger.d("上拉加载;");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -72,8 +73,7 @@ public class PullToRefreshListActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 pullToRefreshListView.onPullUpRefreshComplete();
-                                pullToRefreshListView.onPullDownRefreshComplete();
-                                Logger.d("pullToRefreshListView.onPullUpRefreshComplete();");
+                                Logger.d("上拉加载完成完成");
                             }
                         });
                     }

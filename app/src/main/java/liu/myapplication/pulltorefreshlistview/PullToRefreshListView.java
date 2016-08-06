@@ -2,11 +2,14 @@ package liu.myapplication.pulltorefreshlistview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Adapter;
 import android.widget.ListView;
+
+import com.orhanobut.logger.Logger;
 
 import liu.myapplication.pulltorefreshlistview.ILoadingLayout.State;
 /**
@@ -167,7 +170,11 @@ public class PullToRefreshListView extends PullToRefreshBase<ListView>
 		if (isScrollLoadEnabled() && hasMoreData()) {
 			if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 					|| scrollState == OnScrollListener.SCROLL_STATE_FLING) {
-				if (isReadyForPullUp()) {
+				Logger.i("看看能不能向上加载-----------------");
+				Logger.i("canPullUp-----------------"+canPullUp);
+				Logger.i("isReadyForPullUp()-----------------"+isReadyForPullUp());
+				if (isReadyForPullUp() && canPullUp) {
+					Logger.i("开始了向上加载-----------------");
 					startLoading();
 				}
 			}
@@ -177,11 +184,51 @@ public class PullToRefreshListView extends PullToRefreshBase<ListView>
 			mScrollListener.onScrollStateChanged(view, scrollState);
 		}
 	}
-
+	private int mLastFirstPostion;
+	private int mLastFirstTop;
+	private int touchSlop;
+	private boolean pullDown;
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 						 int visibleItemCount, int totalItemCount) {
-		if (null != mScrollListener) {
+		int currentTop;
+
+		View firstChildView = view.getChildAt(0);
+		if (firstChildView != null) {
+			currentTop = view.getChildAt(0).getTop();
+		} else {
+			//ListView初始化的时候会回调onScroll方法，此时getChildAt(0)仍是为空的
+			return;
+		}
+		//判断上次可见的第一个位置和这次可见的第一个位置
+		if (firstVisibleItem != mLastFirstPostion) {
+			//不是同一个位置
+			if (firstVisibleItem > mLastFirstPostion) {
+				//TODO do down
+				Log.i("cs", "--->down");
+				pullDown = true;
+			} else {
+				//TODO do up
+				Log.i("cs", "--->up");
+			}
+			mLastFirstTop = currentTop;
+		} else {
+			//是同一个位置
+			if(Math.abs(currentTop - mLastFirstTop) > touchSlop){
+				//避免动作执行太频繁或误触，加入touchSlop判断，具体值可进行调整
+				if (currentTop > mLastFirstTop) {
+					//TODO do up
+					Log.i("cs", "equals--->up");
+				} else if (currentTop < mLastFirstTop) {
+					//TODO do down
+					Log.i("cs", "equals--->down");
+				}
+				mLastFirstTop = currentTop;
+			}
+		}
+		mLastFirstPostion = firstVisibleItem;
+
+	if (null != mScrollListener) {
 			mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount,
 					totalItemCount);
 		}
@@ -219,9 +266,7 @@ public class PullToRefreshListView extends PullToRefreshBase<ListView>
 			return true;
 		}
 
-		int mostTop = (mListView.getChildCount() > 0) ? mListView.getChildAt(0)
-				.getTop() : 0;
-		if (mostTop >= 0) {
+		if (mListView.getChildCount() > 0 && mListView.getFirstVisiblePosition() == 0 && mListView.getChildAt(0).getTop() >= mListView.getPaddingTop()) {
 			return true;
 		}
 
