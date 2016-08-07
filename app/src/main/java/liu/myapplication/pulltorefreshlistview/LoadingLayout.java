@@ -170,7 +170,7 @@ public abstract class LoadingLayout extends FrameLayout implements
 	}
 
 	@Override
-	public void onPull(float scale) {
+	public void  onPull(float scale) {
 
 	}
 

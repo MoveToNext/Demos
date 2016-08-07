@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.orhanobut.logger.Logger;
@@ -29,17 +30,21 @@ public class CustomViewActivity extends AppCompatActivity {
     @BindView(R.id.btn_showHeight)
     Button btnShowHeight;
 
+    private String[] items = {"aaa", "bbb", "ccc", "ddd","eee","fff","ggg","hhh","iii","jjj","kkk"};
+    private ArrayAdapter arrayAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customview);
         ButterKnife.bind(this);
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, items);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        ListView.setAdapter(arrayAdapter);
     }
 
     @OnClick(R.id.btn_showHeight)

@@ -47,7 +47,7 @@ public class MyLinearlayout extends LinearLayout {
                 break;
             case MotionEvent.ACTION_MOVE:
                 Logger.d("MyLinearlayout-ACTION_MOVE");
-                return true;
+                return false;
         }
         Logger.d("MyLinearlayout-onInterceptTouchEvent");
         return super.onInterceptTouchEvent(ev);

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -34,6 +36,7 @@ public class PullToRefreshListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pulltorefresh);
         ButterKnife.bind(this);
         initListView();
+        View childAt = ((ViewGroup) getWindow().getDecorView().findViewById(android.R.id.content)).getChildAt(0);
     }
 
     private void initListView() {
