@@ -29,6 +29,7 @@ import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
 import liu.myapplication.ui.PullToRefreshListActivity;
+import liu.myapplication.ui.RecyclerViewActivity;
 import liu.myapplication.ui.RemoteViewActivity;
 import liu.myapplication.view.MyView;
 
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     Button popupwindow;
     @BindView(R.id.PullToRefreshListView)
     Button PullToRefreshListView;
+    @BindView(R.id.RecyclerView)
+    Button RecyclerView;
     private int width;
     private int height;
 
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      */
-    @OnClick({R.id.PullToRefreshListView,R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
+    @OnClick({R.id.RecyclerView,R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -131,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
                 return;
             case R.id.PullToRefreshListView://PullToRefreshListView
                 intent.setClass(this, PullToRefreshListActivity.class);
+                break;
+            case R.id.RecyclerView:
+                intent.setClass(this, RecyclerViewActivity.class);
                 break;
         }
         startActivity(intent);

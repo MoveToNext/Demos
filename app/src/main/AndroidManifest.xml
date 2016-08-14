@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="liu.myapplication">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,17 +16,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.AnimationActivity"></activity>
-        <activity android:name=".ui.CustomViewActivity"></activity>
-        <activity android:name=".ui.OkhttpActivity"></activity>
-        <activity android:name=".ui.ObserverTestActivity"></activity>
+        <activity android:name=".ui.AnimationActivity"/>
+        <activity android:name=".ui.CustomViewActivity"/>
+        <activity android:name=".ui.OkhttpActivity"/>
+        <activity android:name=".ui.ObserverTestActivity"/>
         <activity
             android:theme="@style/transparentTitleTheme"
-            android:name=".ui.HeaderScrollViewActivity"></activity>
+            android:name=".ui.HeaderScrollViewActivity"/>
         <activity
             android:launchMode="singleTop"
-            android:name=".ui.RemoteViewActivity"></activity>
-        <activity android:name=".ui.PullToRefreshListActivity"></activity>
+            android:name=".ui.RemoteViewActivity"/>
+        <activity android:name=".ui.PullToRefreshListActivity"/>
+        <!--RecyclerView-->
+        <activity android:name=".ui.RecyclerViewActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />
