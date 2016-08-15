@@ -16,8 +16,8 @@ import liu.myapplication.recyclerView.CategoryAdapter;
 
 /**
  * @PackageName: liu.myapplication.ui
- * @Description:
- * @author:
+ * @Description: RecyclerViewActivity
+ * @author: mifm
  * @date: 2016/8/12 14:23
  */
 public class RecyclerViewActivity extends AppCompatActivity {

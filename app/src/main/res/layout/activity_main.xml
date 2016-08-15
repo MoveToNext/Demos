@@ -1,71 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="liu.myapplication.MainActivity"
-    android:orientation="vertical">
+    tools:context="liu.myapplication.MainActivity">
 
-    <Button
-        android:id="@+id/animation_property"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="属性动画"/>
-    <Button
-        android:id="@+id/custom_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="自定义view"/>
-    <Button
-        android:id="@+id/ok_http"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ok_http"/>
-    <Button
-        android:id="@+id/Observer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="观察者模式"/>
-    <Button
-        android:id="@+id/getChannel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="获得清单文件中的Meta_data"/>
-    <Button
-        android:id="@+id/HeaderListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="HeaderListView"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/RemoteView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="RemoteView+Notification"/>
-    <Button
-        android:id="@+id/popupwindow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="弹出popupwindow"/>
-    <Button
-        android:id="@+id/PullToRefreshListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="PullToRefreshListView"/>
-    <Button
-        android:id="@+id/RecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="RecyclerView"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/animation_property"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="属性动画" />
+
+            <Button
+                android:id="@+id/custom_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="自定义view" />
+
+            <Button
+                android:id="@+id/ok_http"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ok_http" />
+
+            <Button
+                android:id="@+id/Observer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="观察者模式" />
+
+            <Button
+                android:id="@+id/getChannel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获得清单文件中的Meta_data"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/HeaderListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HeaderListView"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/RemoteView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RemoteView+Notification"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/popupwindow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出popupwindow"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/PullToRefreshListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PullToRefreshListView"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/RecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RecyclerView"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/RecyclerDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RecyclerDefault"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

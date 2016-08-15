@@ -29,6 +29,7 @@
         <activity android:name=".ui.PullToRefreshListActivity"/>
         <!--RecyclerView-->
         <activity android:name=".ui.RecyclerViewActivity"/>
+        <activity android:name=".ui.RecyclerDefaultActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />
