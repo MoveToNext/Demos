@@ -126,6 +126,7 @@ public class PullToRefreshListView extends PullToRefreshBase<ListView>
 
 	@Override
 	public void onPullUpRefreshComplete() {
+
 		super.onPullUpRefreshComplete();
 
 		if (null != mLoadMoreFooterLayout) {

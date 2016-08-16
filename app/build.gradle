@@ -12,9 +12,15 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
+            buildConfigField "String", "API_HOST", "\"http://api.test.com\""//API Host
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
+            buildConfigField "String", "API_HOST", "\"http://api.test.com\""//API Host
         }
     }
 }

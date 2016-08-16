@@ -210,12 +210,13 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout
 	@Override
 	protected final void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-
+		Logger.d("执行了===============");
 		// We need to update the header/footer when our size changes
 		refreshLoadingViewsSize();
 
 		// 设置刷新View的大小
 		refreshRefreshableViewSize(w, h);
+
 
 		/**
 		 * As we're currently in a Layout Pass, we need to schedule another one
