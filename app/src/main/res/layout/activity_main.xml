@@ -91,6 +91,17 @@
                 android:layout_height="wrap_content"
                 android:text="RecyclerDefault"
                 android:textAllCaps="false" />
+            <Button
+                android:id="@+id/fanxing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="泛型"
+                android:textAllCaps="false" />
+            <Button
+                android:id="@+id/ExpandableListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ExpandableListView" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

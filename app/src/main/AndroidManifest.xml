@@ -30,6 +30,9 @@
         <!--RecyclerView-->
         <activity android:name=".ui.RecyclerViewActivity"/>
         <activity android:name=".ui.RecyclerDefaultActivity"/>
+        <!--泛型-->
+        <activity android:name=".ui.GenericActivity"/>
+        <activity android:name=".ui.ExpandableListViewActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />

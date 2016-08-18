@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.orhanobut.logger.Logger;
+
 /**
  * 这个类定义了Header和Footer的共通行为
  * 
@@ -160,6 +162,7 @@ public abstract class LoadingLayout extends FrameLayout implements
 		if (mCurState != state) {
 			mPreState = mCurState;
 			mCurState = state;
+			Logger.d("setState-----");
 			onStateChanged(state, mPreState);
 		}
 	}
@@ -195,22 +198,27 @@ public abstract class LoadingLayout extends FrameLayout implements
 		switch (curState) {
 		case RESET:
 			onReset();
+			Logger.d("onReset");
 			break;
 
 		case RELEASE_TO_REFRESH:
 			onReleaseToRefresh();
+			Logger.d("onReleaseToRefresh");
 			break;
 
 		case PULL_TO_REFRESH:
 			onPullToRefresh();
+			Logger.d("onPullToRefresh");
 			break;
 
 		case REFRESHING:
 			onRefreshing();
+			Logger.d("onRefreshing");
 			break;
 
 		case NO_MORE_DATA:
 			onNoMoreData();
+			Logger.d("onNoMoreData");
 			break;
 
 		default:

@@ -28,7 +28,7 @@ public class FooterLoadingLayout extends LoadingLayout {
 	 * @param context
 	 *            context
 	 */
-	public FooterLoadingLayout(Context context) {
+	public  FooterLoadingLayout(Context context) {
 		super(context);
 		init(context);
 	}

@@ -25,6 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.ui.AnimationActivity;
 import liu.myapplication.ui.CustomViewActivity;
+import liu.myapplication.ui.ExpandableListViewActivity;
+import liu.myapplication.ui.GenericActivity;
 import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.ObserverTestActivity;
 import liu.myapplication.ui.OkhttpActivity;
@@ -58,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
     Button RecyclerView;
     @BindView(R.id.RecyclerDefault)
     Button RecyclerDefault;
+    @BindView(R.id.fanxing)
+    Button fanxing;
+    @BindView(R.id.ExpandableListView)
+    Button ExpandableListView;
     private int width;
     private int height;
 
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      */
-    @OnClick({R.id.RecyclerDefault,R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
+    @OnClick({R.id.ExpandableListView,R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -143,6 +149,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.RecyclerDefault:
                 intent.setClass(this, RecyclerDefaultActivity.class);
+                break;
+            case R.id.fanxing:
+                intent.setClass(this, GenericActivity.class);
+                break;
+            case R.id.ExpandableListView:
+                intent.setClass(this, ExpandableListViewActivity.class);
                 break;
         }
         startActivity(intent);
