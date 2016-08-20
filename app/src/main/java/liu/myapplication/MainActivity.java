@@ -8,10 +8,14 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,7 +40,7 @@ import liu.myapplication.ui.RecyclerViewActivity;
 import liu.myapplication.ui.RemoteViewActivity;
 import liu.myapplication.view.MyView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActionBarActivity {
 
     @BindView(R.id.custom_view)
     Button customView;
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     Button fanxing;
     @BindView(R.id.ExpandableListView)
     Button ExpandableListView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private int width;
     private int height;
 
@@ -77,6 +83,42 @@ public class MainActivity extends AppCompatActivity {
         width = wm.getDefaultDisplay().getWidth();
         Log.e("height", height + "");
         Log.e("width", width + "");
+        /** 添加toolbar */
+        initToolBar();
+        setSupportActionBar(toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_edit:
+                        Snackbar.make(toolbar,"action_edit",Snackbar.LENGTH_SHORT).setAction("关闭", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                            }
+                        }).show();
+                        break;
+                    case R.id.action_settings:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    private void initToolBar() {
+
+        toolbar.setNavigationIcon(R.mipmap.ic_action_more);
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        toolbar.setTitle("Toolbar");
+        toolbar.setSubtitle("test");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+
     }
 
     /**
@@ -113,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      */
-    @OnClick({R.id.ExpandableListView,R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
+    @OnClick({R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
