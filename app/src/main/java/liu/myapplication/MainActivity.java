@@ -8,8 +8,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -70,6 +73,10 @@ public class MainActivity extends ActionBarActivity {
     Button ExpandableListView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.id_nv_menu)
+    NavigationView  MnavigationView;
+    @BindView(R.id.id_drawer_layout)
+    DrawerLayout MdrawerLayout;
     private int width;
     private int height;
 
@@ -86,24 +93,51 @@ public class MainActivity extends ActionBarActivity {
         /** 添加toolbar */
         initToolBar();
         setSupportActionBar(toolbar);
+        initDrawLayout();
+        initNavigationViewListener();
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.action_edit:
-                        Snackbar.make(toolbar,"action_edit",Snackbar.LENGTH_SHORT).setAction("关闭", new View.OnClickListener() {
+                        Snackbar.make(toolbar, "action_edit", Snackbar.LENGTH_SHORT).setAction("关闭", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 finish();
                             }
                         }).show();
                         break;
-                    case R.id.action_settings:
-                        break;
                 }
                 return true;
             }
         });
+    }
+
+    private void initNavigationViewListener() {
+        MnavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        Snackbar.make(toolbar, "nav_home", Snackbar.LENGTH_SHORT).setAction("关闭", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                            }
+                        }).show();
+                        break;
+                }
+                MdrawerLayout.closeDrawers();
+                return true;
+            }
+        });
+    }
+
+    private void initDrawLayout() {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
+                MdrawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        actionBarDrawerToggle.syncState();
+        MdrawerLayout.setDrawerListener(actionBarDrawerToggle);
     }
 
     private void initToolBar() {
@@ -119,6 +153,11 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     /**
