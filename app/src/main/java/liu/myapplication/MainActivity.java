@@ -17,6 +17,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -255,5 +256,24 @@ public class MainActivity extends ActionBarActivity {
         p.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         Logger.d("chidfdsfsdfds");
         p.showAtLocation(this.popupwindow, Gravity.BOTTOM, 0, 0);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("友情提示");
+            builder.setMessage("确认退出应用吗");
+            builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    MainActivity.this.finish();
+                }
+            });
+            builder.setPositiveButton("取消", null);
+            builder.show();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
