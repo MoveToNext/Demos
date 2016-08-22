@@ -126,7 +126,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="left"
         android:fitsSystemWindows="false"
-        app:headerLayout = "@layout/header_just_username"
         app:menu="@menu/menu_drawer"
         />
 
