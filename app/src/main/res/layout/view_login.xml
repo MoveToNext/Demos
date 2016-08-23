@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_login_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/rl_weibo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="开启APP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:y_in="1.2"
+        app:y_out="1.2"
+       />
+
+</RelativeLayout>
