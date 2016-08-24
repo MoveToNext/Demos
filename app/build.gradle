@@ -37,4 +37,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.prolificinteractive:parallaxpager:2.2.1'
+    compile project(':library')
 }

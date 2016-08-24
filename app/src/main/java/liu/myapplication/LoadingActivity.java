@@ -1,6 +1,5 @@
 package liu.myapplication;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 
 import com.prolificinteractive.parallaxpager.ParallaxContainer;
 import com.prolificinteractive.parallaxpager.ParallaxContextWrapper;
+import com.utils.library.SPUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +30,6 @@ public class LoadingActivity extends AppCompatActivity {
     @BindView(R.id.iv_man)
     ImageView ivMan;
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +39,9 @@ public class LoadingActivity extends AppCompatActivity {
         int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
         decorView.setSystemUiVisibility(option);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
         if (parallaxContainer != null){
             parallaxContainer.setLooping(false);
             parallaxContainer.setupChildren(getLayoutInflater(),R.layout.view_intro_1,R.layout.view_intro_2,
@@ -52,12 +53,12 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoadingActivity.this,MainActivity.class));
+                SPUtil.setSP(LoadingActivity.this,"isFirst",false);
                 finish();
             }
         });
 
     }
-
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(new ParallaxContextWrapper(newBase));

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:autoScrollHeight="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_content"
     android:orientation="vertical">
 
@@ -11,5 +12,21 @@
         android:layout_height="wrap_content"
         android:text="Fanxing"
         android:textAppearance="@style/TextAppearance.AppCompat"/>
-
+    <liu.myapplication.view.AutoScrollTextView
+        android:id="@+id/text_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        autoScrollHeight:textSize="10dp"
+        autoScrollHeight:padding="10dp"
+        autoScrollHeight:animDuration="300"
+        autoScrollHeight:scrollDuration="3000"
+        autoScrollHeight:textColor="#000000"
+        android:background="#ffffff"/>
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上传头像"
+        android:textAppearance="@style/TextAppearance.AppCompat"/>
 </LinearLayout>
