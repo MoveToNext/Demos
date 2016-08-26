@@ -116,6 +116,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ExpandableListView" />
+                <Button
+                    android:id="@+id/EventBusActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EventBusActivity" />
+                <Button
+                    android:id="@+id/life_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="生活小帮助" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

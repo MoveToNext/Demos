@@ -38,4 +38,8 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.prolificinteractive:parallaxpager:2.2.1'
     compile project(':library')
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.zhy:base-rvadapter:3.0.3'
+    compile 'com.bigkoo:pickerview:2.1.1'
 }

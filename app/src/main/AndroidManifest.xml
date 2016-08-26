@@ -45,6 +45,10 @@
         <activity android:name=".ui.ExpandableListViewActivity"/>
         <!--图片裁剪-->
         <activity android:name=".ui.ClipImageActivity"/>
+        <!--eventbus-->
+        <activity android:name=".ui.EventBusActivity"/>
+        <!--生活工具类-->
+        <activity android:name=".ui.LifeToolsActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />
