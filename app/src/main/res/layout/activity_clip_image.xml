@@ -43,7 +43,7 @@
         app:clipBorderWidth="2dp"
         app:clipType="circle"
         app:mHorizontalPadding="30dp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <!--矩形裁剪框示例 -->
     <liu.myapplication.view.ClipViewLayout
@@ -54,7 +54,7 @@
         app:clipBorderWidth="2dp"
         app:clipType="rectangle"
         app:mHorizontalPadding="30dp"
-        android:visibility="visible"
+        android:visibility="gone"
         />
 
     <RelativeLayout

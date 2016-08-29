@@ -17,4 +17,9 @@
     <style name="transparentTitleTheme" parent= "Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="anim_share_popup">
+        <item name="android:windowEnterAnimation">@anim/out_to_in</item>
+        <item name="android:windowExitAnimation">@anim/in_to_out</item>
+    </style>
 </resources>

@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+import com.utils.library.BitmapUtil;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,7 +59,7 @@ public class ClipImageActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
             //设置图片资源
-            clipViewLayout2.setImageSrc(getIntent().getData());
+        clipViewLayout1.setImageSrc(getIntent().getData());
     }
 
     @OnClick({R.id.iv_back, R.id.stock_name, R.id.clipViewLayout1, R.id.clipViewLayout2, R.id.btn_cancel, R.id.bt_ok, R.id.bottom})
@@ -76,7 +79,7 @@ public class ClipImageActivity extends AppCompatActivity {
 
     private void generateUriAndReturn() {
         //调用返回剪切图
-        Bitmap zoomedCropBitmap = clipViewLayout2.clip();
+        Bitmap zoomedCropBitmap = clipViewLayout1.clip();
         if (zoomedCropBitmap == null){
             return;
         }
@@ -86,7 +89,9 @@ public class ClipImageActivity extends AppCompatActivity {
             try {
                 outputStream = getContentResolver().openOutputStream(mSaveUri);
                 if (outputStream != null){
-                    zoomedCropBitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+                    Bitmap bitmap = BitmapUtil.getRoundedCornerBitmap(zoomedCropBitmap, 500);
+                    boolean compress = bitmap.compress(Bitmap.CompressFormat.PNG, 90, outputStream);
+                    Logger.e("compress"+compress);
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

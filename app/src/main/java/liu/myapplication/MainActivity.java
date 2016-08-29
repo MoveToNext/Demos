@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 
 import com.orhanobut.logger.Logger;
+import com.utils.library.BitmapUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -62,6 +63,7 @@ import liu.myapplication.view.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
     @BindView(R.id.custom_view)
     Button customView;
     @BindView(R.id.ok_http)
@@ -318,10 +320,20 @@ public class MainActivity extends BaseActivity {
         popupWindow.setBackgroundDrawable(dw);
         popupWindow.setTouchable(true);
         popupWindow.setOutsideTouchable(true);
+        popupWindow.setAnimationStyle(R.style.anim_share_popup);
         final WindowManager.LayoutParams params = getWindow().getAttributes();
         params.alpha = 0.5f;
         getWindow().setAttributes(params);
         popupWindow.showAtLocation(this.popupwindow, Gravity.BOTTOM, 0, 0);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+//                    != PackageManager.PERMISSION_GRANTED ){
+//                ActivityCompat.requestPermissions(this,
+//                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+//            }
+//        }
+
         /** 拍照 */
         inflate.findViewById(R.id.btn_camera).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -358,6 +370,24 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        switch (requestCode) {
+//            case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+//                // 如果请求取消,这里返回的数组是空的.
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    // 权限已经被允许
+//                    Logger.d("// 权限已经被允许");
+//                } else {
+//                    // 权限被拒绝
+//                    Logger.d("//  // 权限被拒绝");
+//                }
+//                return;
+//            }
+//        }
+//    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -377,12 +407,12 @@ public class MainActivity extends BaseActivity {
                 if (resultCode == RESULT_OK) {
                     if (data.getData() != null) {
                         Uri pic = data.getData();
-                        Logger.d("data.getData() != null");
                         String cropImagePath = getRealFilePathFromUri(getApplicationContext(), pic);
                         Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
+                        int bitmapSize = BitmapUtil.getBitmapSize(bitMap);
+                        Logger.d("bitmapSize-"+bitmapSize);
                         id_username.setImageBitmap(bitMap);
                     }
-                    Logger.d("data.getData() = null");
                 }
                 break;
 
