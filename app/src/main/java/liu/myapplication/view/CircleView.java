@@ -21,7 +21,11 @@ public class CircleView extends View {
     private float mRadius;
     private RectF mArcRectF;
     private Paint mPaint;
+    private Paint mArcPaint;
+    private Paint textPaint;
 
+    private String showText = "50";
+    private float part = 180;
     public CircleView(Context context) {
         super(context);
         initOption();
@@ -49,19 +53,49 @@ public class CircleView extends View {
     private void initOption() {
         WindowManager windowManager =  (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         width = windowManager.getDefaultDisplay().getWidth();
+        mCircleXY = width/2;
         mPaint = new Paint();
         mPaint.setColor(Color.YELLOW);
-        mCircleXY = width/2;
+        mArcPaint = new Paint();
+        mArcPaint.setAntiAlias(true);
+        mArcPaint.setColor(getResources().getColor(
+                android.R.color.holo_blue_bright));
+        mArcPaint.setStrokeWidth((float) (width * 0.1));
+        mArcPaint.setStyle(Paint.Style.STROKE);
+
+        textPaint = new Paint();
+        textPaint.setColor(Color.GRAY);
+        textPaint.setTextSize(120);
+        textPaint.setTextAlign(Paint.Align.CENTER);
         mRadius = (float)(width*0.5/2);
         mArcRectF = new RectF((float)(width*0.1),(float)(width*0.1),
                 (float)(width*0.9),(float)(width*0.9));
+    }
+
+    public float getPart() {
+        return part;
+    }
+
+    public void setPart(float part) {
+        this.part = (part / 100f) * 360f;
+        this.showText = part + "";
+        invalidate();
+    }
+
+    public String getShowText() {
+        return showText;
+    }
+
+    public void setShowText(String showText) {
+        this.showText = showText;
+        invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawCircle(mCircleXY,mCircleXY,mRadius,mPaint);
-        canvas.drawArc(mArcRectF,270,70,false,mPaint);
-        canvas.drawText("dfsdf",0,5,mCircleXY,mCircleXY,mPaint);
+        canvas.drawArc(mArcRectF,270,part,false,mArcPaint);
+        canvas.drawText(showText,mCircleXY,mCircleXY+30,textPaint);
     }
 }

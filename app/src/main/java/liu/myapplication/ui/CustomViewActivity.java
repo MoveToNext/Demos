@@ -2,7 +2,9 @@ package liu.myapplication.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.R;
+import liu.myapplication.view.CircleView;
 import liu.myapplication.view.MyView;
 
 /**
@@ -29,8 +32,12 @@ public class CustomViewActivity extends AppCompatActivity {
     android.widget.ListView ListView;
     @BindView(R.id.btn_showHeight)
     Button btnShowHeight;
+    @BindView(R.id.circleView)
+    CircleView circleView;
+    @BindView(R.id.edit)
+    TextInputEditText edit;
 
-    private String[] items = {"aaa", "bbb", "ccc", "ddd","eee","fff","ggg","hhh","iii","jjj","kkk"};
+    private String[] items = {"aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg", "hhh", "iii", "jjj", "kkk"};
     private ArrayAdapter arrayAdapter;
 
     @Override
@@ -49,9 +56,13 @@ public class CustomViewActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_showHeight)
     public void onClick() {
-        int measuredHeight = myView.getMeasuredHeight();
-        int height = myView.getHeight();
-        myView.layout(myView.getLeft()+2,myView.getTop()+1,myView.getRight()+2,myView.getBottom());
+//        int measuredHeight = myView.getMeasuredHeight();
+//        int height = myView.getHeight();
+//        myView.layout(myView.getLeft() + 2, myView.getTop() + 1, myView.getRight() + 2, myView.getBottom());
+        String part = edit.getText().toString();
+        if (!TextUtils.isEmpty(part)){
+            circleView.setPart(Float.valueOf(part));
+        }
     }
 
     @Override
