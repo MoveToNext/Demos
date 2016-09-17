@@ -28,6 +28,8 @@
         <activity android:name=".ui.AnimationActivity"/>
 
         <activity android:name=".ui.CustomViewActivity"/>
+        <!--viewGroup-->
+        <activity android:name=".ui.CustomViewGroupActivity"/>
         <activity android:name=".ui.OkhttpActivity"/>
         <activity android:name=".ui.ObserverTestActivity"/>
         <activity

@@ -49,6 +49,7 @@ import liu.myapplication.evnentMessage.TestMessage;
 import liu.myapplication.ui.AnimationActivity;
 import liu.myapplication.ui.ClipImageActivity;
 import liu.myapplication.ui.CustomViewActivity;
+import liu.myapplication.ui.CustomViewGroupActivity;
 import liu.myapplication.ui.ExpandableListViewActivity;
 import liu.myapplication.ui.GenericActivity;
 import liu.myapplication.ui.HeaderScrollViewActivity;
@@ -100,6 +101,8 @@ public class MainActivity extends BaseActivity {
     Button EventBusActivity;
     @BindView(R.id.life_time)
     Button lifeTime;
+    @BindView(R.id.custom_viewGroup)
+    Button customViewGroup;
     private int width;
     private int height;
     private PopupWindow popupWindow;
@@ -259,7 +262,7 @@ public class MainActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.life_time,R.id.EventBusActivity, R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
+    @OnClick({R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity, R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -268,6 +271,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.custom_view://自定义栏目
                 openActivity(CustomViewActivity.class);
+                break;
+            case R.id.custom_viewGroup://自定义viewgroup
+                openActivity(CustomViewGroupActivity.class);
                 break;
             case R.id.ok_http:
                 openActivity(OkhttpActivity.class);
@@ -410,7 +416,7 @@ public class MainActivity extends BaseActivity {
                         String cropImagePath = getRealFilePathFromUri(getApplicationContext(), pic);
                         Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                         int bitmapSize = BitmapUtil.getBitmapSize(bitMap);
-                        Logger.d("bitmapSize-"+bitmapSize);
+                        Logger.d("bitmapSize-" + bitmapSize);
                         id_username.setImageBitmap(bitMap);
                     }
                 }
