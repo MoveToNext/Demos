@@ -205,10 +205,10 @@ public class MainActivity extends BaseActivity {
     private void initToolBar() {
 
         toolbar.setNavigationIcon(R.mipmap.ic_action_more);
-        toolbar.setLogo(R.mipmap.ic_launcher);
-        toolbar.setTitle("Toolbar");
+//        toolbar.setLogo(R.mipmap.ic_launcher);
+        toolbar.setTitle("next");
         toolbar.setTitleTextColor(Color.parseColor("#ffffff"));
-        toolbar.setSubtitle("test");
+//        toolbar.setSubtitle("test");
         toolbar.setSubtitleTextColor(Color.parseColor("#ffffff"));
     }
 
