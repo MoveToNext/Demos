@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.Scroller;
  */
 public class CustomScrollView extends ViewGroup {
 
+    private final static String TAG = "CustomScrollView";
     private int mScreenHeight;
     private Scroller mScroller;
     private int mLastY;
@@ -89,6 +91,7 @@ public class CustomScrollView extends ViewGroup {
                 mStart = getScrollY();
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "getScrollY = " + getScrollY());
                 if (!mScroller.isFinished()){
                     mScroller.abortAnimation();
                 }
@@ -99,11 +102,14 @@ public class CustomScrollView extends ViewGroup {
                 if (getScrollY() > getHeight() - mScreenHeight) {
                     dy = 0;
                 }
+                Log.d(TAG, "getHeight = " + getHeight());
+                Log.d(TAG, "mScreenHeight = " + mScreenHeight);
                 scrollBy(0,dy);
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
                 int dScrollY = checkAlignment();
+                Log.d(TAG, "dScrollY = " + dScrollY);
                 if (dScrollY > 0){
                     if (dScrollY < mScreenHeight / 3) {
                         mScroller.startScroll(
