@@ -11,7 +11,7 @@
             android:title="Messages" />
         <item
             android:id="@+id/nav_friends"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/friends"
             android:title="Friends" />
         <item
             android:id="@+id/nav_discussion"
