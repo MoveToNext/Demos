@@ -6,9 +6,6 @@ import android.support.annotation.Nullable;
 import liu.myapplication.R;
 import liu.myapplication.view.BaseActivity;
 
-/**
- * Created by liutongyang on 2016/9/17.
- */
 public class CustomViewGroupActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

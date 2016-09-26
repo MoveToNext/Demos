@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,12 +18,14 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import liu.myapplication.Interface.WeatherApi;
 import liu.myapplication.R;
 import liu.myapplication.bean.WeatherBean;
-import liu.myapplication.utils.Constants;
-import liu.myapplication.utils.HttpUtils;
 import liu.myapplication.view.BaseActivity;
-import okhttp3.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * @PackageName: liu.myapplication.ui
@@ -78,17 +77,34 @@ public class LifeToolsActivity extends BaseActivity {
         map.put("key", "1680e4bfb1f00");
         map.put("city", "闵行");
         map.put("province", "上海");
-        HttpUtils.get(Constants.TIANQISERVER, map, new StringCallback() {
+//        HttpUtils.get(Constants.TIANQISERVER, map, new StringCallback() {
+//            @Override
+//            public void onError(Call call, Exception e, int id) {
+//                Logger.e(e.getMessage());
+//            }
+//
+//            @Override
+//            public void onResponse(String response, int id) {
+//                Gson gson = new Gson();
+//                WeatherBean weatherBean = gson.fromJson(response, WeatherBean.class);
+//                showDatas(weatherBean);
+//            }
+//        });
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://apicloud.mob.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        WeatherApi weatherApi = retrofit.create(WeatherApi.class);
+        retrofit2.Call<WeatherBean> beanCall = weatherApi.mycall(map);
+        beanCall.enqueue(new Callback<WeatherBean>() {
             @Override
-            public void onError(Call call, Exception e, int id) {
-                Logger.e(e.getMessage());
+            public void onResponse(retrofit2.Call<WeatherBean> call, Response<WeatherBean> response) {
+                showDatas(response.body());
             }
 
             @Override
-            public void onResponse(String response, int id) {
-                Gson gson = new Gson();
-                WeatherBean weatherBean = gson.fromJson(response, WeatherBean.class);
-                showDatas(weatherBean);
+            public void onFailure(retrofit2.Call<WeatherBean> call, Throwable t) {
+
             }
         });
     }
