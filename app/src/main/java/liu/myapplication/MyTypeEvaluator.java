@@ -9,11 +9,11 @@ import android.util.Log;
  * @author: MIFM
  * @date: 2016/7/22 14:31
  */
-public class MyTypeEvaluator implements TypeEvaluator<Paint> {
+public class MyTypeEvaluator implements TypeEvaluator<Point> {
     @Override
-    public Paint evaluate(float fraction, Paint startValue, Paint endValue) {
+    public Point evaluate(float fraction, Point startValue, Point endValue) {
         Log.e("fraction", fraction + "");
-        Paint paint = new Paint();
+        Point paint = new Point();
         paint.x = 100*fraction * 3f;
         paint.y = 100 * (fraction * 3f) * (fraction * 3f);
         return paint;
