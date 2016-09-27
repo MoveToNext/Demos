@@ -8,9 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.utils.library.ResourceUtil;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.Interface.WeatherApi;
 import liu.myapplication.R;
+import liu.myapplication.bean.CityOneBean;
 import liu.myapplication.bean.WeatherBean;
 import liu.myapplication.view.BaseActivity;
 import retrofit2.Callback;
@@ -54,8 +59,20 @@ public class LifeToolsActivity extends BaseActivity {
         initCityDatas();
     }
 
+    /**
+     * 加载城市数据
+     */
     private void initCityDatas() {
-        new Thread().start();
+        new Thread(){
+            @Override
+            public void run() {
+                String ss = ResourceUtil.geFileFromAssets(getApplicationContext(), "city-code.json");
+                Gson gson = new Gson();
+                Type collectionType = new TypeToken<List<CityOneBean>>(){}.getType();
+                List<CityOneBean> list = (List<CityOneBean>) gson.fromJson(ss, collectionType);
+                Log.d("LifeToolsActivity", list.toString());
+            }
+        }.start();
     }
 
     @OnClick({R.id.btn_sendRequest})
