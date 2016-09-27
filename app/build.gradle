@@ -46,4 +46,6 @@ dependencies {
     //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.bigkoo:pickerview:2.1.1'
+
 }

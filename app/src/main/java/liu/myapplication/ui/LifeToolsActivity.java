@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.bigkoo.pickerview.OptionsPickerView;
+import com.bigkoo.pickerview.model.IPickerViewData;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.utils.library.ResourceUtil;
@@ -15,6 +17,7 @@ import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +28,7 @@ import butterknife.OnClick;
 import liu.myapplication.Interface.WeatherApi;
 import liu.myapplication.R;
 import liu.myapplication.bean.CityOneBean;
+import liu.myapplication.bean.ProvinceBean;
 import liu.myapplication.bean.WeatherBean;
 import liu.myapplication.view.BaseActivity;
 import retrofit2.Callback;
@@ -39,7 +43,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @date: 2016/8/26 14:18
  */
 public class LifeToolsActivity extends BaseActivity {
-
+    public static final String TAG = "LifeToolsActivity";
     @BindView(R.id.btn_sendRequest)
     Button btnSendRequest;
     @BindView(R.id.vMasker)
@@ -49,6 +53,12 @@ public class LifeToolsActivity extends BaseActivity {
     @BindView(R.id.btn_choose)
     Button btnChoose;
     private Context context = this;
+    private OptionsPickerView pvOptions;
+    private ArrayList<ProvinceBean> options1Items = new ArrayList<>();
+    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
+    private ArrayList<ArrayList<ArrayList<IPickerViewData>>> options3Items = new ArrayList<>();
+    private String tx;
+    private String pickViewText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +66,8 @@ public class LifeToolsActivity extends BaseActivity {
         setContentView(R.layout.activity_life);
         ButterKnife.bind(this);
         RecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        //选项选择器
+        pvOptions = new OptionsPickerView(this);
         initCityDatas();
     }
 
@@ -70,12 +82,57 @@ public class LifeToolsActivity extends BaseActivity {
                 Gson gson = new Gson();
                 Type collectionType = new TypeToken<List<CityOneBean>>(){}.getType();
                 List<CityOneBean> list = (List<CityOneBean>) gson.fromJson(ss, collectionType);
+                addData(list);
                 Log.d("LifeToolsActivity", list.toString());
+                List<CityOneBean.CitiesBean.CitieBean> been = list.get(0).getCities().get(0).getCities();
             }
         }.start();
     }
 
-    @OnClick({R.id.btn_sendRequest})
+    /**
+     * 填充省市的数据
+     * @param list 省市的数据
+     */
+    private void addData(List<CityOneBean> list) {
+        List<CityOneBean.CitiesBean.CitieBean> citieBeen = list.get(1).getCities().get(0).getCities();
+
+        //一级菜单
+            options1Items.add(new ProvinceBean(list.get(1).getName()));
+        //选项2
+        ArrayList<String> options2Items_01=new ArrayList<>();
+        options2Items_01.add("上海");
+        options2Items.add(options2Items_01);
+        //选项3
+        ArrayList<ArrayList<IPickerViewData>> options3Items_01 = new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_01_01=new ArrayList<>();
+        for (int i = 0; i < citieBeen.size(); i++) {
+            options3Items_01_01.add(new ProvinceBean(citieBeen.get(i).getName()));
+        }
+        options3Items_01.add(options3Items_01_01);
+        options3Items.add(options3Items_01);
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+                //三级联动效果
+                pvOptions.setPicker(options1Items, options2Items, options3Items, true);
+                pvOptions.setTitle("选择城市");
+                pvOptions.setCyclic(false, false, false);
+                //设置默认选中的三级项目
+                //监听确定选择按钮
+                pvOptions.setSelectOptions(0, 0, 0);
+                pvOptions.setOnoptionsSelectListener(new OptionsPickerView.OnOptionsSelectListener() {
+                    @Override
+                    public void onOptionsSelect(int options1, int option2, int options3) {
+                        //返回的分别是三个级别的选中位置
+                        pickViewText = options3Items.get(options1).get(option2).get(options3).getPickerViewText();
+                    }
+                });
+//            }
+//        });
+
+    }
+
+    @OnClick({R.id.btn_choose,R.id.btn_sendRequest})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_sendRequest:
@@ -83,8 +140,7 @@ public class LifeToolsActivity extends BaseActivity {
                 break;
 
             case R.id.btn_choose:
-
-
+                pvOptions.show();
                 break;
         }
     }
@@ -92,7 +148,7 @@ public class LifeToolsActivity extends BaseActivity {
     private void sendRequest() {
         Map<String, String> map = new HashMap<>();
         map.put("key", "1680e4bfb1f00");
-        map.put("city", "闵行");
+        map.put("city", pickViewText);
         map.put("province", "上海");
 //        HttpUtils.get(Constants.TIANQISERVER, map, new StringCallback() {
 //            @Override
