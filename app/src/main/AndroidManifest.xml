@@ -52,6 +52,8 @@
         <activity android:name=".ui.EventBusActivity"/>
         <!--生活工具类-->
         <activity android:name=".ui.LifeToolsActivity"/>
+        <!--关于-->
+        <activity android:name=".ui.AboutMeActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />

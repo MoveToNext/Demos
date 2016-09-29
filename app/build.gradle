@@ -48,4 +48,5 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.bigkoo:pickerview:2.1.1'
 
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
 }
