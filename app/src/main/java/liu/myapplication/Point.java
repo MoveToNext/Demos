@@ -6,14 +6,14 @@ package liu.myapplication;
  * @author: MIFM
  * @date: 2016/7/22 14:30
  */
-public class Paint {
+public class Point {
     public float x;
     public float y;
 
-    public Paint() {
+    public Point() {
     }
 
-    public Paint(float x, float y) {
+    public Point(float x, float y) {
         this.x = x;
         this.y = y;
     }

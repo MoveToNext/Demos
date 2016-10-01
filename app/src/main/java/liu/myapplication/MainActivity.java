@@ -46,6 +46,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.evnentMessage.TestMessage;
+import liu.myapplication.ui.AboutMeActivity;
 import liu.myapplication.ui.AnimationActivity;
 import liu.myapplication.ui.ClipImageActivity;
 import liu.myapplication.ui.CustomViewActivity;
@@ -137,6 +138,9 @@ public class MainActivity extends BaseActivity {
                                 finish();
                             }
                         }).show();
+                        break;
+                    case R.id.action_settings:
+                        openActivity(AboutMeActivity.class);
                         break;
                 }
                 return true;

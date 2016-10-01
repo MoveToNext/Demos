@@ -12,7 +12,7 @@ import android.view.animation.LinearInterpolator;
 import com.orhanobut.logger.Logger;
 
 import liu.myapplication.MyTypeEvaluator;
-import liu.myapplication.Paint;
+import liu.myapplication.Point;
 import liu.myapplication.R;
 import liu.myapplication.view.MyView;
 
@@ -91,13 +91,13 @@ public class AnimationActivity extends AppCompatActivity {
 //        set.setDuration(3000);
 //        set.start();
 
-        ValueAnimator valueAnimator = ValueAnimator.ofObject(new MyTypeEvaluator(), new Paint(0, 0));
+        ValueAnimator valueAnimator = ValueAnimator.ofObject(new MyTypeEvaluator(), new Point(0, 0));
         valueAnimator.setDuration(3000);
         valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                Paint paint = (Paint) animation.getAnimatedValue();
+                Point paint = (Point) animation.getAnimatedValue();
                 image.setX(paint.x);
                 image.setY(paint.y);
             }
