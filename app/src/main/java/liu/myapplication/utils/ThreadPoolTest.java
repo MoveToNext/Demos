@@ -8,17 +8,23 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @PackageName: liu.myapplication.utils
- * @Description:
+ * @Description: 线程池单例
  * @author:
  * @date: 2016/9/30 16:28
  */
 public class ThreadPoolTest {
-    private ThreadPoolTest(){};
+    private ThreadPoolTest(){}
     private ExecutorService mCachedThreadPool;
     private ExecutorService mFixedThreadPool;
     private ExecutorService mSingleThreadExecutor;
-    private static ThreadPoolTest threadPoolTest = new ThreadPoolTest();
+    //Double Check Lock 实现单例
+    private volatile static ThreadPoolTest threadPoolTest = null;
     public static ThreadPoolTest getInstance() {
+        if (threadPoolTest == null){
+            synchronized (ThreadPoolTest.class){
+                threadPoolTest = new ThreadPoolTest();
+            }
+        }
         return threadPoolTest;
     }
 
