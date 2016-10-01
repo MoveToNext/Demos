@@ -18,6 +18,7 @@ public class ThreadPoolTest {
     private ExecutorService mFixedThreadPool;
     private ExecutorService mSingleThreadExecutor;
     //Double Check Lock 实现单例
+
     private volatile static ThreadPoolTest threadPoolTest = null;
     public static ThreadPoolTest getInstance() {
         if (threadPoolTest == null){
