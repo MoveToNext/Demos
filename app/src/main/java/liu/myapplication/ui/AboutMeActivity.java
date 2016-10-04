@@ -9,10 +9,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.R;
+import liu.myapplication.bean.Cities;
+import liu.myapplication.bean.Person;
 import liu.myapplication.image.DoubleCache;
 import liu.myapplication.image.ImageLoader;
 import liu.myapplication.image.ImageLoaderConfig;
@@ -21,7 +30,7 @@ import liu.myapplication.view.BaseActivity;
 /**
  * @PackageName: liu.myapplication.ui
  * @Description: 关于我
- * @author:
+ * @author: 
  * @date: 2016/9/29 17:47
  */
 public class AboutMeActivity extends BaseActivity {
@@ -36,6 +45,7 @@ public class AboutMeActivity extends BaseActivity {
     @BindView(R.id.dd)
     ConstraintLayout dd;
     private ImageLoader imageLoader;
+    private Cities cities;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +74,29 @@ public class AboutMeActivity extends BaseActivity {
                 break;
 
             case R.id.iv_head:
+                getclass();
                 break;
+        }
+    }
+
+    private void getclass() {
+        try {
+            Class<?> aClass = Class.forName(Person.class.getName());
+            Constructor<?>[] constructors = aClass.getConstructors();
+            Logger.d(constructors.length);
+            Field[] fields = aClass.getDeclaredFields();
+            Method count = aClass.getDeclaredMethod("speak", String.class);
+            count.invoke(constructors[0].newInstance(), "Hello World！");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
     }
 }
