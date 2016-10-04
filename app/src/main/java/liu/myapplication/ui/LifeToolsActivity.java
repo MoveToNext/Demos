@@ -3,8 +3,8 @@ package liu.myapplication.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -83,8 +83,6 @@ public class LifeToolsActivity extends BaseActivity {
                 Type collectionType = new TypeToken<List<CityOneBean>>(){}.getType();
                 List<CityOneBean> list = (List<CityOneBean>) gson.fromJson(ss, collectionType);
                 addData(list);
-                Log.d("LifeToolsActivity", list.toString());
-                List<CityOneBean.CitiesBean.CitieBean> been = list.get(0).getCities().get(0).getCities();
             }
         }.start();
     }
@@ -125,6 +123,7 @@ public class LifeToolsActivity extends BaseActivity {
                     public void onOptionsSelect(int options1, int option2, int options3) {
                         //返回的分别是三个级别的选中位置
                         pickViewText = options3Items.get(options1).get(option2).get(options3).getPickerViewText();
+                        btnChoose.setText(pickViewText);
                     }
                 });
 //            }
@@ -184,17 +183,31 @@ public class LifeToolsActivity extends BaseActivity {
 
     private void showDatas(WeatherBean weatherBean) {
         final List<WeatherBean.ResultBean.FutureBean> result = weatherBean.getResult().get(0).getFuture();
-        Log.d("dd", result.toString());
-        RecyclerView.setAdapter(new CommonAdapter<WeatherBean.ResultBean.FutureBean>(context, R.layout.item_list_category_second, result) {
+        RecyclerView.setAdapter(new CommonAdapter<WeatherBean.ResultBean.FutureBean>(context, R.layout.item_weather, result) {
             @Override
-            protected void convert(ViewHolder holder, WeatherBean.ResultBean.FutureBean o, int position) {
-                holder.setText(R.id.text22, o.getTemperature());
+            protected void convert(ViewHolder holder, final WeatherBean.ResultBean.FutureBean o, int position) {
+                holder.setText(R.id.temp, o.getTemperature());
+                holder.setText(R.id.date, o.getDate());
+                holder.setText(R.id.week, o.getWeek());
+                holder.setText(R.id.qing, o.getDayTime()+"转"+o.getNight());
+                holder.setOnClickListener(R.id.temp, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(LifeToolsActivity.this);
+                        dialog.setTitle("天气");
+                        dialog.setMessage(o.getWind());
+                        dialog.setNegativeButton("确定" ,null);
+                        dialog.setPositiveButton("取消",null);
+                        dialog.show();
+                    }
+                });
             }
 
             @Override
             public void onBindViewHolder(ViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
             }
+
         });
     }
 }
