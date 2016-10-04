@@ -25,14 +25,31 @@ public class ImageLoader  {
     private Context context;
     public ImageCache mMemoryCache;
     ExecutorService mExecutorService  = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-    public ImageLoader(Context context) {
-        this.context = context;
-        mMemoryCache = new DiskCache(context);
+    private ImageLoader(){}
+    public volatile static ImageLoader mImageLoader;
+    public static ImageLoader getInstance(){
+        if (mImageLoader == null){
+            synchronized (ImageLoader.class){
+                mImageLoader = new ImageLoader();
+            }
+        }
+        return mImageLoader;
     }
 
-    //注入缓存实现
-    public void setImageCache(ImageCache cache){
-        mMemoryCache = cache;
+    /**
+     * 图片加载配置对象
+     * @param config
+     */
+    public void init(ImageLoaderConfig config){
+        mMemoryCache = config.mCache;
+        this.context = config.context;
+        setThreadCount(config.threadCount);
+    }
+    //设置新的线程数量
+    private void setThreadCount(int count){
+        mExecutorService.shutdown();
+        mExecutorService = null;
+        mExecutorService = Executors.newFixedThreadPool(count);
     }
     /**
      * 加载图片
