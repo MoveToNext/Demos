@@ -65,7 +65,6 @@ import liu.myapplication.view.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
     @BindView(R.id.custom_view)
     Button customView;
     @BindView(R.id.ok_http)
@@ -250,6 +249,7 @@ public class MainActivity extends BaseActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("渠道号")
                 .setMessage(msg)
+                .setCancelable(true)
                 .setPositiveButton("确定", null)
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
@@ -328,7 +328,8 @@ public class MainActivity extends BaseActivity {
         ColorDrawable dw = new ColorDrawable(0xb0000000);
         //设置SelectPicPopupWindow弹出窗体的背景
         popupWindow.setBackgroundDrawable(dw);
-        popupWindow.setTouchable(true);
+//        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setAnimationStyle(R.style.anim_share_popup);
         final WindowManager.LayoutParams params = getWindow().getAttributes();

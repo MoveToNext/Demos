@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.R;
 import liu.myapplication.bean.Cities;
+import liu.myapplication.bean.MyAnimation;
 import liu.myapplication.bean.Person;
 import liu.myapplication.image.DoubleCache;
 import liu.myapplication.image.ImageLoader;
@@ -30,7 +31,7 @@ import liu.myapplication.view.BaseActivity;
 /**
  * @PackageName: liu.myapplication.ui
  * @Description: 关于我
- * @author: 
+ * @author:
  * @date: 2016/9/29 17:47
  */
 public class AboutMeActivity extends BaseActivity {
@@ -74,9 +75,15 @@ public class AboutMeActivity extends BaseActivity {
                 break;
 
             case R.id.iv_head:
-                getclass();
+//                getclass();
+                showAnimation();
                 break;
         }
+    }
+
+    private void showAnimation() {
+        MyAnimation animation = new MyAnimation();
+        ivHead.startAnimation(animation);
     }
 
     private void getclass() {
