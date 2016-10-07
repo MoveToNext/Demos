@@ -42,7 +42,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="自定义view" />
-
+                <Button
+                    android:id="@+id/guagua_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="刮刮卡" />
                 <Button
                     android:id="@+id/custom_viewGroup"
                     android:layout_width="match_parent"

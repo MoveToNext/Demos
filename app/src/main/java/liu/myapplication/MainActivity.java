@@ -53,6 +53,7 @@ import liu.myapplication.ui.CustomViewActivity;
 import liu.myapplication.ui.CustomViewGroupActivity;
 import liu.myapplication.ui.ExpandableListViewActivity;
 import liu.myapplication.ui.GenericActivity;
+import liu.myapplication.ui.GuaGuaActivity;
 import liu.myapplication.ui.HeaderScrollViewActivity;
 import liu.myapplication.ui.LifeToolsActivity;
 import liu.myapplication.ui.ObserverTestActivity;
@@ -103,6 +104,8 @@ public class MainActivity extends BaseActivity {
     Button lifeTime;
     @BindView(R.id.custom_viewGroup)
     Button customViewGroup;
+    @BindView(R.id.guagua_view)
+    Button guaguaView;
 
     private PopupWindow popupWindow;
     private Context context = this;
@@ -262,7 +265,10 @@ public class MainActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity, R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView, R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView, R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
+    @OnClick({R.id.guagua_view,R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
+            R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView,
+            R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView,
+            R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -271,6 +277,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.custom_view://自定义栏目
                 openActivity(CustomViewActivity.class);
+                break;
+            case R.id.guagua_view://刮刮卡
+                openActivity(GuaGuaActivity.class);
                 break;
             case R.id.custom_viewGroup://自定义viewgroup
                 openActivity(CustomViewGroupActivity.class);

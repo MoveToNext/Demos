@@ -54,6 +54,8 @@
         <activity android:name=".ui.LifeToolsActivity"/>
         <!--关于-->
         <activity android:name=".ui.AboutMeActivity"/>
+        <!--刮刮卡-->
+        <activity android:name=".ui.GuaGuaActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />
