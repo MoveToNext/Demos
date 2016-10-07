@@ -11,6 +11,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
 /**
  * Created by liutongyang on 2016/9/16.
  * 音频图
@@ -53,6 +55,7 @@ public class VolumeView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = getWidth();
         mRectHeight = getHeight();
+        Logger.e("mRectHeight"+mRectHeight);
         mRectWidth = (int) (mWidth * 0.6) / mRectCount;
         mLinearGradient = new LinearGradient(
                 0,

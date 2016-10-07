@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <liu.myapplication.view.MyLinearlayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ap = "http://schemas.android.com/apk/res-auto"
+    xmlns:ap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -11,9 +12,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
             <liu.myapplication.view.MyView
                 android:id="@+id/my_view"
@@ -48,20 +49,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="part"
-                android:inputType="number"/>
+                android:inputType="number" />
 
             <liu.myapplication.view.CircleView
                 android:id="@+id/circleView"
                 android:layout_width="match_parent"
                 android:layout_height="350dp" />
+
             <liu.myapplication.view.VolumeView
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />
 
-            <ListView
-                android:id="@+id/ListView"
+            <liu.myapplication.view.YiBiaoView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ListView>
+                android:layout_height="400dp" />
         </LinearLayout>
     </ScrollView>
 </liu.myapplication.view.MyLinearlayout>

@@ -103,8 +103,7 @@ public class MainActivity extends BaseActivity {
     Button lifeTime;
     @BindView(R.id.custom_viewGroup)
     Button customViewGroup;
-    private int width;
-    private int height;
+
     private PopupWindow popupWindow;
     private Context context = this;
     private final static int REQUEST_CAPTURE = 100;
@@ -118,9 +117,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        height = wm.getDefaultDisplay().getHeight();
-        width = wm.getDefaultDisplay().getWidth();
         /** 添加toolbar */
         initToolBar();
         setSupportActionBar(toolbar);
