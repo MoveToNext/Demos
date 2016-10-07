@@ -85,10 +85,12 @@ public class CustomScrollView extends ViewGroup {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int y = (int) event.getY();
+        Log.d(TAG, "y = " + y);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 mLastY = y;
                 mStart = getScrollY();
+                Log.d(TAG, "mStart = " + mStart);
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.d(TAG, "getScrollY = " + getScrollY());

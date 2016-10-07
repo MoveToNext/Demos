@@ -52,6 +52,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="自定义viewGroup" />
+                <Button
+                    android:id="@+id/ViewDragHelper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:text="ViewDragHelper" />
 
                 <Button
                     android:id="@+id/ok_http"

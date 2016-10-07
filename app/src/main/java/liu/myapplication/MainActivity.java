@@ -62,6 +62,7 @@ import liu.myapplication.ui.PullToRefreshListActivity;
 import liu.myapplication.ui.RecyclerDefaultActivity;
 import liu.myapplication.ui.RecyclerViewActivity;
 import liu.myapplication.ui.RemoteViewActivity;
+import liu.myapplication.ui.ViewDragHelperActivity;
 import liu.myapplication.view.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -106,6 +107,8 @@ public class MainActivity extends BaseActivity {
     Button customViewGroup;
     @BindView(R.id.guagua_view)
     Button guaguaView;
+    @BindView(R.id.ViewDragHelper)
+    Button ViewDragHelper;
 
     private PopupWindow popupWindow;
     private Context context = this;
@@ -265,7 +268,7 @@ public class MainActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.guagua_view,R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
+    @OnClick({R.id.ViewDragHelper,R.id.guagua_view, R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
             R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView,
             R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView,
             R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
@@ -283,6 +286,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.custom_viewGroup://自定义viewgroup
                 openActivity(CustomViewGroupActivity.class);
+                break;
+            case R.id.ViewDragHelper://R.id.ViewDragHelper
+                openActivity(ViewDragHelperActivity.class);
                 break;
             case R.id.ok_http:
                 openActivity(OkhttpActivity.class);
