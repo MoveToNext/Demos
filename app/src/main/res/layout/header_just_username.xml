@@ -4,7 +4,9 @@
     android:layout_height="192dp"
     android:background="@color/orange"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:paddingTop="@dimen/padding_top"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
