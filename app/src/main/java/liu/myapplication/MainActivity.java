@@ -109,6 +109,8 @@ public class MainActivity extends BaseActivity {
     Button guaguaView;
     @BindView(R.id.ViewDragHelper)
     Button ViewDragHelper;
+    @BindView(R.id.rx_java)
+    Button rxJava;
 
     private PopupWindow popupWindow;
     private Context context = this;
@@ -268,12 +270,11 @@ public class MainActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.ViewDragHelper,R.id.guagua_view, R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
+    @OnClick({R.id.rx_java,R.id.ViewDragHelper, R.id.guagua_view, R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
             R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView,
             R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView,
             R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
     public void onClick(View view) {
-        Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.animation_property://属性动画
                 openActivity(AnimationActivity.class);

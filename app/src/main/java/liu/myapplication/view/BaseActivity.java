@@ -21,9 +21,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         height = wm.getDefaultDisplay().getHeight();
         width = wm.getDefaultDisplay().getWidth();
+        
     }
 
     public void openActivity(Class<?> mclass) {

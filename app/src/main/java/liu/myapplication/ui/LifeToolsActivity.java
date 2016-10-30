@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,6 +13,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.model.IPickerViewData;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.utils.library.ResourceUtil;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -25,14 +27,20 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import liu.myapplication.Interface.WeatherApi;
 import liu.myapplication.R;
 import liu.myapplication.bean.CityOneBean;
 import liu.myapplication.bean.ProvinceBean;
 import liu.myapplication.bean.WeatherBean;
 import liu.myapplication.view.BaseActivity;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -75,16 +83,35 @@ public class LifeToolsActivity extends BaseActivity {
      * 加载城市数据
      */
     private void initCityDatas() {
-        new Thread(){
+        Observable<List<CityOneBean>> observable = Observable.create(new ObservableOnSubscribe<List<CityOneBean>>() {
             @Override
-            public void run() {
+            public void subscribe(ObservableEmitter<List<CityOneBean>> e) throws Exception {
                 String ss = ResourceUtil.geFileFromAssets(getApplicationContext(), "city-code.json");
                 Gson gson = new Gson();
                 Type collectionType = new TypeToken<List<CityOneBean>>(){}.getType();
                 List<CityOneBean> list = (List<CityOneBean>) gson.fromJson(ss, collectionType);
-                addData(list);
+                e.onNext(list);
+                e.onComplete();
             }
-        }.start();
+
+        }).subscribeOn(Schedulers.io())
+          .observeOn(AndroidSchedulers.mainThread());
+        observable.subscribe(new Consumer<List<CityOneBean>>() {
+            @Override
+            public void accept(List<CityOneBean> cityOneBeen) throws Exception {
+                addData(cityOneBeen);
+            }
+        });
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                String ss = ResourceUtil.geFileFromAssets(getApplicationContext(), "city-code.json");
+//                Gson gson = new Gson();
+//                Type collectionType = new TypeToken<List<CityOneBean>>(){}.getType();
+//                List<CityOneBean> list = (List<CityOneBean>) gson.fromJson(ss, collectionType);
+//                addData(list);
+//            }
+//        }.start();
     }
 
     /**
@@ -165,20 +192,47 @@ public class LifeToolsActivity extends BaseActivity {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://apicloud.mob.com")
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
-        retrofit2.Call<WeatherBean> beanCall = weatherApi.mycall(map);
-        beanCall.enqueue(new Callback<WeatherBean>() {
-            @Override
-            public void onResponse(retrofit2.Call<WeatherBean> call, Response<WeatherBean> response) {
-                showDatas(response.body());
-            }
+        Observable<WeatherBean> beanCall = weatherApi.mycall(map);
 
-            @Override
-            public void onFailure(retrofit2.Call<WeatherBean> call, Throwable t) {
+        beanCall.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<WeatherBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: ");
+                    }
 
-            }
-        });
+                    @Override
+                    public void onNext(WeatherBean value) {
+                        showDatas(value);
+                        Log.d(TAG, "onNext: ");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "onError: ");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: ");
+                    }
+                });
+
+//        beanCall.enqueue(new Callback<WeatherBean>() {
+//            @Override
+//            public void onResponse(retrofit2.Call<WeatherBean> call, Response<WeatherBean> response) {
+//                showDatas(response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(retrofit2.Call<WeatherBean> call, Throwable t) {
+//
+//            }
+//        });
     }
 
     private void showDatas(WeatherBean weatherBean) {

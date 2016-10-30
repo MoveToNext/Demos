@@ -2,8 +2,8 @@ package liu.myapplication.Interface;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import liu.myapplication.bean.WeatherBean;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
@@ -18,6 +18,8 @@ public interface WeatherApi {
 //    Call<WeatherBean> mycall(@Query("key") String key,
 //                             @Query("city") String city,
 //                             @Query("province") String pro);
+//    @GET("/v1/weather/query")
+//    Call<WeatherBean> mycall(@QueryMap Map<String,String> map);
     @GET("/v1/weather/query")
-    Call<WeatherBean> mycall(@QueryMap Map<String,String> map);
+    Observable<WeatherBean> mycall(@QueryMap Map<String,String> map);
 }
