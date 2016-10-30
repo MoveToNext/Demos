@@ -13,7 +13,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.base">
+        android:theme="@style/AppTheme">
         <activity android:name=".LoadingActivity"/>
         <activity
             android:name=".FirstActivity">
@@ -24,9 +24,8 @@
         </activity>
 
         <activity
-            android:theme="@style/AppTheme"
-            android:name=".MainActivity">
-        </activity>
+            android:theme="@style/AppTranslucentTheme"
+            android:name=".MainActivity"/>
 
         <activity android:name=".ui.AnimationActivity"/>
 
@@ -36,7 +35,7 @@
         <activity android:name=".ui.OkhttpActivity"/>
         <activity android:name=".ui.ObserverTestActivity"/>
         <activity
-            android:theme="@style/transparentTitleTheme"
+            android:theme="@style/AppTranslucentTheme"
             android:name=".ui.HeaderScrollViewActivity"/>
         <activity
             android:launchMode="singleTop"

@@ -1,23 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.base">
+    <style name="AppTranslucentTheme" parent="AppTheme.base">
         <!-- Customize your theme here. -->
 
     </style>
 
-    <style name="AppTheme.base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+    <style name="AppTheme" parent="AppTheme.base">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/orange</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowBackground">@color/colorPrimaryDark</item>-->
     </style>
-    <style name="transparentTitleTheme" parent= "Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-    </style>
 
+
+    </style>
     <style name="anim_share_popup">
         <item name="android:windowEnterAnimation">@anim/out_to_in</item>
         <item name="android:windowExitAnimation">@anim/in_to_out</item>
