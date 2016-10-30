@@ -88,4 +88,16 @@
         }
         
         
-当一个Activity完全加载完毕后，然后就执行        
+当一个Activity完全加载完毕后，然后就执行
+
+## rxjava retrofit 依赖冲突
+
+```
+compile 'com.squareup.retrofit2:retrofit:2.1.0'
+compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+compile 'io.reactivex.rxjava2:rxjava:2.0.0'
+compile 'io.reactivex.rxjava2:rxandroid:2.0.0'
+compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+```
+
+将com.jakewharton.retrofit:retrofit2-rxjava2-adapter替换com.squareup.retrofit2:adapter-rxjava即可
