@@ -48,6 +48,7 @@ import butterknife.OnClick;
 import liu.myapplication.evnentMessage.TestMessage;
 import liu.myapplication.ui.AboutMeActivity;
 import liu.myapplication.ui.AnimationActivity;
+import liu.myapplication.ui.BlockViewActivity;
 import liu.myapplication.ui.ClipImageActivity;
 import liu.myapplication.ui.CustomViewActivity;
 import liu.myapplication.ui.CustomViewGroupActivity;
@@ -111,6 +112,8 @@ public class MainActivity extends BaseActivity {
     Button ViewDragHelper;
     @BindView(R.id.rx_java)
     Button rxJava;
+    @BindView(R.id.block_view)
+    Button blockView;
 
     private PopupWindow popupWindow;
     private Context context = this;
@@ -270,7 +273,7 @@ public class MainActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.rx_java,R.id.ViewDragHelper, R.id.guagua_view, R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
+    @OnClick({R.id.block_view,R.id.rx_java, R.id.ViewDragHelper, R.id.guagua_view, R.id.custom_viewGroup, R.id.life_time, R.id.EventBusActivity,
             R.id.ExpandableListView, R.id.fanxing, R.id.RecyclerDefault, R.id.RecyclerView,
             R.id.PullToRefreshListView, R.id.popupwindow, R.id.animation_property, R.id.HeaderListView,
             R.id.custom_view, R.id.ok_http, R.id.Observer, R.id.getChannel, R.id.RemoteView})
@@ -329,6 +332,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.life_time:
                 openActivity(LifeToolsActivity.class);
+                break;
+            case R.id.block_view:
+                openActivity(BlockViewActivity.class);
                 break;
         }
     }

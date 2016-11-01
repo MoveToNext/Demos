@@ -147,6 +147,12 @@
                     android:layout_height="wrap_content"
                     android:textAllCaps="false"
                     android:text="RxJava" />
+                <Button
+                    android:id="@+id/block_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:text="圆表" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

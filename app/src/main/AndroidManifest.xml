@@ -59,6 +59,10 @@
         <activity android:name=".ui.GuaGuaActivity"/>
         <!--ViewDragHelper-->
         <activity android:name=".ui.ViewDragHelperActivity"/>
+        <!--BlockViewActivity-->
+        <activity
+            android:theme="@style/block"
+            android:name=".ui.BlockViewActivity"/>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="wandoujia" />
