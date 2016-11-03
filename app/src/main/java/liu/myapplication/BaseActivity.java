@@ -1,4 +1,4 @@
-package liu.myapplication.view;
+package liu.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
