@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import liu.myapplication.R;
-import liu.myapplication.view.BaseActivity;
+import liu.myapplication.BaseActivity;
 
 /**
  * PackageName:  liu.myapplication.ui

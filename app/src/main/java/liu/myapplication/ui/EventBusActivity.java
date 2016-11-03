@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.R;
 import liu.myapplication.evnentMessage.TestMessage;
-import liu.myapplication.view.BaseActivity;
+import liu.myapplication.BaseActivity;
 
 /**
  * @PackageName: liu.myapplication.ui

@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 import liu.myapplication.MyTypeEvaluator;
 import liu.myapplication.Point;
 import liu.myapplication.R;
-import liu.myapplication.view.BaseActivity;
+import liu.myapplication.BaseActivity;
 import liu.myapplication.view.MyView;
 
 /**

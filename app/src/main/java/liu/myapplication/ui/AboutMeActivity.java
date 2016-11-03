@@ -26,7 +26,7 @@ import liu.myapplication.bean.Person;
 import liu.myapplication.image.DoubleCache;
 import liu.myapplication.image.ImageLoader;
 import liu.myapplication.image.ImageLoaderConfig;
-import liu.myapplication.view.BaseActivity;
+import liu.myapplication.BaseActivity;
 
 /**
  * @PackageName: liu.myapplication.ui

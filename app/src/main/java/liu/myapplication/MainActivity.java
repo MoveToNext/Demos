@@ -64,7 +64,6 @@ import liu.myapplication.ui.RecyclerDefaultActivity;
 import liu.myapplication.ui.RecyclerViewActivity;
 import liu.myapplication.ui.RemoteViewActivity;
 import liu.myapplication.ui.ViewDragHelperActivity;
-import liu.myapplication.view.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 

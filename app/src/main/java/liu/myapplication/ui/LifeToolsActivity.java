@@ -40,7 +40,7 @@ import liu.myapplication.R;
 import liu.myapplication.bean.CityOneBean;
 import liu.myapplication.bean.ProvinceBean;
 import liu.myapplication.bean.WeatherBean;
-import liu.myapplication.view.BaseActivity;
+import liu.myapplication.BaseActivity;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
