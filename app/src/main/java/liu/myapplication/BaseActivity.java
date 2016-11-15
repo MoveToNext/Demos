@@ -9,23 +9,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
+import butterknife.ButterKnife;
+
 /**
  * @PackageName: liu.myapplication.view
  * @Description:
  * @author:
  * @date: 2016/8/26 11:45
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected int width;
     protected int height;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
             WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         height = wm.getDefaultDisplay().getHeight();
         width = wm.getDefaultDisplay().getWidth();
-        
+        initView();
     }
+
+    public abstract int getLayoutId();
+
+    public abstract void initView();
 
     public void openActivity(Class<?> mclass) {
         openActivity(mclass,null);

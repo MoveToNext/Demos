@@ -2,6 +2,7 @@ package liu.myapplication;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
 /**
@@ -15,6 +16,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         CrashReport.initCrashReport(getApplicationContext(), "38334716f2", false);
+        LeakCanary.install(this);
     }
 
 }

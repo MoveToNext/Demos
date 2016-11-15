@@ -1,7 +1,5 @@
 package liu.myapplication.ui;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,11 +7,10 @@ import android.widget.EditText;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
+import liu.myapplication.BaseActivity;
 import liu.myapplication.R;
 import liu.myapplication.evnentMessage.TestMessage;
-import liu.myapplication.BaseActivity;
 
 /**
  * @PackageName: liu.myapplication.ui
@@ -28,10 +25,13 @@ public class EventBusActivity extends BaseActivity {
     EditText etChangeToolBar;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eventbus);
-        ButterKnife.bind(this);
+    public int getLayoutId() {
+        return R.layout.activity_eventbus;
+    }
+
+    @Override
+    public void initView() {
+
     }
 
     @OnClick(R.id.sendMessageToMain)

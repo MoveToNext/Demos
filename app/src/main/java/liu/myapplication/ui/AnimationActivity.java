@@ -8,8 +8,6 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,11 +19,10 @@ import android.widget.RelativeLayout;
 import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import liu.myapplication.BaseActivity;
 import liu.myapplication.MyTypeEvaluator;
 import liu.myapplication.Point;
 import liu.myapplication.R;
-import liu.myapplication.BaseActivity;
 import liu.myapplication.view.MyView;
 
 /**
@@ -44,10 +41,12 @@ public class AnimationActivity extends BaseActivity {
     private ImageView[] views;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_animation);
-        ButterKnife.bind(this);
+    public int getLayoutId() {
+        return R.layout.activity_animation;
+    }
+
+    @Override
+    public void initView() {
         initMenu();
         image = (MyView) findViewById(R.id.image);
         image.setOnTouchListener(new View.OnTouchListener() {

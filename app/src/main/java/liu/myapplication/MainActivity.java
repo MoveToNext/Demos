@@ -43,7 +43,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.File;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import liu.myapplication.evnentMessage.TestMessage;
 import liu.myapplication.ui.AboutMeActivity;
@@ -125,8 +124,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        createCameraTempFile(savedInstanceState);
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initView() {
         /** 添加toolbar */
         initToolBar();
         setSupportActionBar(toolbar);
@@ -154,7 +161,6 @@ public class MainActivity extends BaseActivity {
 
         /** 注册eventbus */
         EventBus.getDefault().register(this);
-        createCameraTempFile(savedInstanceState);
     }
 
     private void createCameraTempFile(Bundle savedInstanceState) {

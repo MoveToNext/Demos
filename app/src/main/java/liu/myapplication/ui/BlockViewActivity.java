@@ -1,10 +1,7 @@
 package liu.myapplication.ui;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-
-import liu.myapplication.R;
 import liu.myapplication.BaseActivity;
+import liu.myapplication.R;
 
 /**
  * PackageName:  liu.myapplication.ui
@@ -13,8 +10,12 @@ import liu.myapplication.BaseActivity;
  */
 public class BlockViewActivity extends BaseActivity {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blockview);
+    public int getLayoutId() {
+        return R.layout.activity_blockview;
+    }
+
+    @Override
+    public void initView() {
+
     }
 }

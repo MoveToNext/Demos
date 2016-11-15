@@ -1,8 +1,6 @@
 package liu.myapplication.ui;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -25,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -35,12 +32,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import liu.myapplication.BaseActivity;
 import liu.myapplication.Interface.WeatherApi;
 import liu.myapplication.R;
 import liu.myapplication.bean.CityOneBean;
 import liu.myapplication.bean.ProvinceBean;
 import liu.myapplication.bean.WeatherBean;
-import liu.myapplication.BaseActivity;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -69,10 +66,12 @@ public class LifeToolsActivity extends BaseActivity {
     private String pickViewText;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_life);
-        ButterKnife.bind(this);
+    public int getLayoutId() {
+        return R.layout.activity_life;
+    }
+
+    @Override
+    public void initView() {
         RecyclerView.setLayoutManager(new LinearLayoutManager(context));
         //选项选择器
         pvOptions = new OptionsPickerView(this);

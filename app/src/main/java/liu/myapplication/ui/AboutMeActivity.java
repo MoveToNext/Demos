@@ -1,10 +1,13 @@
 package liu.myapplication.ui;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ import java.lang.reflect.Method;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import liu.myapplication.BaseActivity;
 import liu.myapplication.R;
 import liu.myapplication.bean.Cities;
 import liu.myapplication.bean.MyAnimation;
@@ -26,7 +30,6 @@ import liu.myapplication.bean.Person;
 import liu.myapplication.image.DoubleCache;
 import liu.myapplication.image.ImageLoader;
 import liu.myapplication.image.ImageLoaderConfig;
-import liu.myapplication.BaseActivity;
 
 /**
  * @PackageName: liu.myapplication.ui
@@ -64,6 +67,17 @@ public class AboutMeActivity extends BaseActivity {
                 imageLoader.init(config);
             }
         },1000);
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.test_constraintlayout;
+    }
+
+    @Override
+    public void initView() {
+
     }
 
     @OnClick({R.id.iv_head,R.id.appCompatButton})
@@ -76,9 +90,21 @@ public class AboutMeActivity extends BaseActivity {
 
             case R.id.iv_head:
 //                getclass();
-                showAnimation();
+//                showAnimation();
+                startAsyncTask();
                 break;
         }
+    }
+
+    private void startAsyncTask() {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+                Log.v("家俊","doInBackground");
+                SystemClock.sleep(10000);
+                return null;
+            }
+        }.execute();
     }
 
     private void showAnimation() {
