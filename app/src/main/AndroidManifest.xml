@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
@@ -14,6 +16,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--ali baichuan -->
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="e48a252da223b32042b2aafd6d63df1b" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCZCgPOCjLoWnNLqlmQImFZsPI5atGo6eYhxuGeJRK3nhE7MlPyieSgigsbIfEcfCwM/tZ0wEkZqPlSUsKqD/osPMpojEDSq3C5nS8+qCN701MKqSfQM1VJE2894O5EK0N/GUOqFiXGVW03K2CCUfEuMWeq7dUCTuJ1pGCz2jDBfT5XqaVR2QgipyUkikJ0WxVXMD2+u2H/nPHEbphIeGpwdaIBJzS29Txrh1aIuQIwugheSCMSk5C3KpaNUdy8PKc9dlwALGBsJ6g0/OFq88DxS0syvynJsG62bgfUbsWcDQAqaKtItneMvu7Tx4vXcc5IXwFEBMe2PbQoOVREr8nvAgMBAAECggEAJKVGRfchO4w1IYA4FBB3eS+qwN74N1dS2PGzotfDxJ4gCCnD+kbUrTCA+k1FXAnLzozTM3+7wV453WGd5XUP9bnUyfYTq56LzpZ58qn2XTc8IkhhFTTFjksODyYmR8KIVg3pqvfEsdpQ3a4QXQRcGTCRX1e18uiKx5rF4Ss1E4+X8zbAEkpDhR6+7o/y7zf3xDFN0qSVzLtHBp7OAZGBzbdw5RZDM6DM1yE17dIVUK6ZLABs2sa1QXJlX1jKH5SAKgLSCcalX2D81TvUI9qhTUsKIDfBifGCVjJPxOBqZ4OfcFQ5aGx2wIYlg+r3HRImEdd+f10i8fZ1ac9juiWUKQKBgQDT8bsRZB+zLDtqPjPjRg0wjRiqyrnJ8mUPoRRKXrOu4lHMuWcGdwBjOJ+axts4vb90oIsv87A/21bfkabG2hKlyJiXRnJKa/udtbT1SMUmkQmpyc5gx9ky9UFLcbALQkXWUwRBCtn62J0jBvCpwn3U0908/hJ+Wtkr7Yn4i0iF5QKBgQC42b4sKTIZpGk3jwg5cjeHYOeY5FbOTbPNB9471Q8UzM+AUEN2iNfJjkoyoTDyykVoQdjtyHPVDoiUfDp8Ri9s//ODTPT5NTMiOqABq/+BPSlZlF4inpNJAWvNcjDAUojZOSldwGqWO9NDv6aQQVYgo5wS9AMd1RCYePzR62XTQwKBgQCzgR6hAh3fEG1Z9EjaCrCNGFN2A7ELGyMA87pNqpugWMpTDAv3674GSyTSX+23xu1qh7aa7FewHcMcIy4PaQ82HgkuxllyMrauwgD7ZaCko1590Q/b5CdPA21DyowBXSXs+e62b8xiqiecTPpzrOgJ406To9Rh8+vPSqX6PW01CQKBgEcLSM/oNV0tl1LHIj4R682YLOrSN5qquoP+licgx98SqF2Ee6k/BtBsY4/567oki3B6fklFVV95anzHEiNZRjj6VjkMhsqQ68ooBf8ef+DIBPBs2ZEsqSbR6QDY9mu0TOxPz9o8bbq324aaTgX7VoLM3ttZ9SiuDubK+UAk3MnJAoGBAI7g1OgyM0KLWmb7C19X5nPLGiXHIf75aLF6QmOaNkUUTCy9bsI6wJKdObz2ffca/wleC4iSDLOAWAIl5BvaOPKuSYWXrLog1TrmIZqA1k89WhxL4jN3MfodFysZE1wOEgygVE4+wYrvFfysyPDqCVmmT5dG8WerKbq4OPE1mPZq" />
+
         <activity android:name=".LoadingActivity"/>
         <activity
             android:name=".FirstActivity">
