@@ -1,0 +1,18 @@
+ext{
+    supportLibrary = '25.3.0'
+
+    android = [
+
+            compileSdkVersion : 25,
+            buildToolsVersion : "25.0.2",
+            minSdkVersion : 15,
+            targetSdkVersion : 23,
+    ]
+
+    //libraries dependencies
+    supportDependencies = [
+            design: "com.android.support:design:${supportLibrary}",
+
+    ]
+
+}

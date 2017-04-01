@@ -1,1 +1,1 @@
-include ':app', ':library', ':activitytaskdemo'
+include ':app', ':library', ':activitytaskdemo', ':commlibrary'
