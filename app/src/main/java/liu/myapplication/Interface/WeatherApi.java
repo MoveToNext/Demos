@@ -20,6 +20,7 @@ public interface WeatherApi {
 //                             @Query("province") String pro);
 //    @GET("/v1/weather/query")
 //    Call<WeatherBean> mycall(@QueryMap Map<String,String> map);
+    //test merge
     @GET("/v1/weather/query")
     Observable<WeatherBean> weatherQuery(@QueryMap Map<String,String> map);
 }
