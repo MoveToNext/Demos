@@ -35,9 +35,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == Category.SECOND_TYPE) {
-            return new SecondViewHolder(layoutInflater.inflate(R.layout.item_list_category_second, null, false));
+            return new SecondViewHolder(layoutInflater.inflate(R.layout.item_list_category_second, parent, false));
         }
-        return new ThirdViewHolder(layoutInflater.inflate(R.layout.item_list_category_third, null, false));
+        return new ThirdViewHolder(layoutInflater.inflate(R.layout.item_list_category_third, parent, false));
     }
 
     @Override

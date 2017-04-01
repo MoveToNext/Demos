@@ -194,7 +194,7 @@ public class LifeToolsActivity extends BaseActivity {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
-        Observable<WeatherBean> beanCall = weatherApi.mycall(map);
+        Observable<WeatherBean> beanCall = weatherApi.weatherQuery(map);
 
         beanCall.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -236,6 +236,7 @@ public class LifeToolsActivity extends BaseActivity {
 
     private void showDatas(WeatherBean weatherBean) {
         final List<WeatherBean.ResultBean.FutureBean> result = weatherBean.getResult().get(0).getFuture();
+
         RecyclerView.setAdapter(new CommonAdapter<WeatherBean.ResultBean.FutureBean>(context, R.layout.item_weather, result) {
             @Override
             protected void convert(ViewHolder holder, final WeatherBean.ResultBean.FutureBean o, int position) {

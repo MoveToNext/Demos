@@ -21,5 +21,5 @@ public interface WeatherApi {
 //    @GET("/v1/weather/query")
 //    Call<WeatherBean> mycall(@QueryMap Map<String,String> map);
     @GET("/v1/weather/query")
-    Observable<WeatherBean> mycall(@QueryMap Map<String,String> map);
+    Observable<WeatherBean> weatherQuery(@QueryMap Map<String,String> map);
 }
