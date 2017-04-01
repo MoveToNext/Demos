@@ -75,6 +75,7 @@ public class LifeToolsActivity extends BaseActivity {
         RecyclerView.setLayoutManager(new LinearLayoutManager(context));
         //选项选择器
         pvOptions = new OptionsPickerView(this);
+        //master
         initCityDatas();
     }
 
