@@ -1,0 +1,2 @@
+com.example.robust.MainActivity -> com.example.robust.MainActivity:
+                int text -> text
