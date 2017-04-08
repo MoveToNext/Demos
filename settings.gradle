@@ -1,1 +1,1 @@
-include ':app', ':library', ':activitytaskdemo', ':commlibrary'
+include ':app', ':library', ':activitytaskdemo', ':commlibrary', ':robusttest'
