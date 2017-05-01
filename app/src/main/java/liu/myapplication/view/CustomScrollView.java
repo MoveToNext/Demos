@@ -59,11 +59,11 @@ public class CustomScrollView extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int childCount = getChildCount();
-        for (int i = 0;i < childCount;i++){
-            View childAt = getChildAt(i);
-            measureChild(childAt,widthMeasureSpec,heightMeasureSpec);
-        }
+//        int childCount = getChildCount();
+//        for (int i = 0;i < childCount;i++){
+//            View childAt = getChildAt(i);
+//            measureChild(childAt,widthMeasureSpec,heightMeasureSpec);
+//        }
     }
 
     @Override
@@ -71,9 +71,10 @@ public class CustomScrollView extends ViewGroup {
 
         int childCount = getChildCount();
         // 设置ViewGroup的高度
-        MarginLayoutParams mlp = (MarginLayoutParams) getLayoutParams();
-        mlp.height = mScreenHeight * childCount;
-        setLayoutParams(mlp);
+//        MarginLayoutParams mlp = (MarginLayoutParams) getLayoutParams();
+//        mlp.height = mScreenHeight * childCount;
+//        Log.d(TAG, "mlp.height:" + mlp.height);
+//        setLayoutParams(mlp);
         for (int i = 0; i < childCount; i++){
             View childAt = getChildAt(i);
             if (childAt.getVisibility() != GONE){
@@ -97,14 +98,15 @@ public class CustomScrollView extends ViewGroup {
                 if (!mScroller.isFinished()){
                     mScroller.abortAnimation();
                 }
+                Log.d(TAG, "mLastY:" + mLastY);
                 int dy = mLastY - y;
                 if (getScrollY() < 0){
                     dy = 0;
                 }
-                if (getScrollY() > getHeight() - mScreenHeight) {
+                if (getScrollY() > mScreenHeight * (getChildCount()-1)) {
                     dy = 0;
                 }
-                Log.d(TAG, "getHeight = " + getHeight());
+                Log.d(TAG, "getHeight = " + getMeasuredHeight());
                 Log.d(TAG, "mScreenHeight = " + mScreenHeight);
                 scrollBy(0,dy);
                 mLastY = y;
