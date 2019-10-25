@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId "com.example.test"
@@ -24,7 +22,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.3'
     compile project(':commlibrary')
 }

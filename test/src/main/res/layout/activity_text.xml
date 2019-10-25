@@ -5,8 +5,8 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list"
+    <EditText
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

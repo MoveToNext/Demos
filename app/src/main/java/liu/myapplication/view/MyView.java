@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
-
 import liu.myapplication.R;
 
 /**
@@ -63,14 +61,40 @@ public class MyView extends View {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Logger.e("MYview - dispatchTouchEvent");
-        return super.dispatchTouchEvent(event);
+        boolean handle = false;
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d("MyView", "MYview - dispatchTouchEvent-ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d("MyView", "MYview - dispatchTouchEvent-ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d("MyView", "MYview - dispatchTouchEvent-ACTION_UP");
+                break;
+        }
+        return handle || super.dispatchTouchEvent(event);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Logger.e("MYview - onTouchEvent");
-        return super.onTouchEvent(event);
+        boolean handle = false;
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d("MyView", "MYview - onTouchEvent-ACTION_DOWN");
+                handle = true;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d("MyView", "MYview - onTouchEvent-ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d("MyView", "MYview - onTouchEvent-ACTION_UP");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d("MyView", "MYview - onTouchEvent-ACTION_CANCEL");
+                break;
+        }
+        return handle || super.onTouchEvent(event);
     }
 
     @Override
